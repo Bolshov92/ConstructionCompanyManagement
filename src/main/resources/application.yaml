@@ -1,4 +1,8 @@
-spring.application.name=ConstructionCompanyManagement
-#spring:
-#  main:
-#    banner-mode: off
+spring:
+  main:
+    banner-mode: off
+
+    datasource:
+      url: jdbc:mysql://localhost:3306/construction_company_management
+      username: root
+      password: file://~/Home/IT/pass.txt
