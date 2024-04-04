@@ -1,7 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: createTablesFromSql
-      author: yourname
-      changes:
-        - sqlFile:
-            path: classpath:db/schema.sql

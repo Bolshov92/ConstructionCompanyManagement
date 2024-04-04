@@ -1,4 +1,4 @@
-package com.example.construction_company_management.entity.enums.projectStatus;
+package com.example.construction_company_management.entity.enums;
 
 public enum ProjectStatus {
     IN_PROGRESS,

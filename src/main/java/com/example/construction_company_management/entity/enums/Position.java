@@ -1,4 +1,4 @@
-package com.example.construction_company_management.entity.enums.employee;
+package com.example.construction_company_management.entity.enums;
 
 public enum Position {
     SUPERVISOR,

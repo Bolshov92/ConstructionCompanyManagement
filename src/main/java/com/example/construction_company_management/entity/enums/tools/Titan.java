@@ -1,7 +1,9 @@
 package com.example.construction_company_management.entity.enums.tools;
 
-public enum BoschTool {
+public enum Titan {
+    SCREW_DRIVER,
+    DRILL,
+    HOVER,
     HAMMER_DRILL,
-    TABLE_SAW,
-    GRINDER
+    PRESSURE_WASHER
 }

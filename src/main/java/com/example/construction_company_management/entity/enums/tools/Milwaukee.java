@@ -1,6 +1,8 @@
 package com.example.construction_company_management.entity.enums.tools;
 
-public enum MakkitaTool {
+public enum Milwaukee {
     SCREW_DRIVER,
-    DRILL
+    DRILL,
+    MEASURE,
+    GRINDER
 }
