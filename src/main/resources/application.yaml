@@ -13,7 +13,7 @@ jpa:
 
     sql:
       init:
-        schema-locations: classpath:db/schema.sql
-        mode: always
         data-location:
           classpath: db/data.sql
+        schema-locations: classpath:db/schema.sql
+        mode: always
