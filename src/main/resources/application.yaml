@@ -7,13 +7,13 @@ spring:
     username: root
     password: Bolshov92
 
-jpa:
-  hibernate:
-    ddl-auto: none
+  jpa:
+   hibernate:
+    ddl-auto: create
 
-    sql:
-      init:
-        data-location:
-          classpath: db/data.sql
-        schema-locations: classpath:db/schema.sql
-        mode: always
+  sql:
+   init:
+    schema-locations: classpath:db/schema.sql
+    mode: always
+
+

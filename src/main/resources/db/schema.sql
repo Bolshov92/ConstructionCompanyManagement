@@ -1,37 +1,37 @@
 CREATE TABLE Authority
 (
-    id        UUID PRIMARY KEY,
-    authority VARCHAR(255) NOT NULL UNIQUE
+    id        CHAR(36) PRIMARY KEY,
+    authority VARCHAR(255)
 );
 
 CREATE TABLE Role
 (
-    role_id   UUID PRIMARY KEY,
-    role_name VARCHAR(255) NOT NULL UNIQUE
+    role_id   CHAR(36) PRIMARY KEY,
+    role_name VARCHAR(255)
 );
 
 CREATE TABLE User
 (
-    user_id           UUID PRIMARY KEY,
-    first_name        VARCHAR(255) NOT NULL,
-    last_name         VARCHAR(255) NOT NULL,
+    user_id           CHAR(36) PRIMARY KEY,
+    first_name        VARCHAR(255),
+    last_name         VARCHAR(255),
     date_of_birth     DATE,
     registration_date DATE
 );
 
 CREATE TABLE UserInfo
 (
-    user_id      UUID PRIMARY KEY,
-    user_name    VARCHAR(255) NOT NULL UNIQUE,
-    password     VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(255) NOT NULL,
+    user_id      CHAR(36) PRIMARY KEY,
+    user_name    VARCHAR(255),
+    password     VARCHAR(255),
+    phone_number VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES User (user_id)
 );
 
 CREATE TABLE Company
 (
-    id   UUID PRIMARY KEY,
-    name VARCHAR(255) NOT NULL UNIQUE,
+    id   CHAR(36) PRIMARY KEY,
+    name VARCHAR(255),
     turnover DOUBLE,
     expenses DOUBLE,
     profit DOUBLE
@@ -39,59 +39,59 @@ CREATE TABLE Company
 
 CREATE TABLE Department
 (
-    id         UUID PRIMARY KEY,
+    id         CHAR(36) PRIMARY KEY,
     projects   TEXT,
-    company_id UUID NOT NULL,
-    FOREIGN KEY (company_id) REFERENCES Company (id)
-);
-
-CREATE TABLE Material
-(
-    id                UUID PRIMARY KEY,
-    name              VARCHAR(255) NOT NULL,
-    type              VARCHAR(255),
-    quantity_in_stock INT          NOT NULL
-);
-
-CREATE TABLE Tool
-(
-    id            UUID PRIMARY KEY,
-    serial_number INT UNIQUE
-);
-
-CREATE TABLE ConstructionProject
-(
-    id              UUID PRIMARY KEY,
-    project_name    VARCHAR(255) NOT NULL,
-    address         VARCHAR(255) NOT NULL,
-    description     TEXT,
-    project_manager UUID,
-    start_date      DATE,
-    end_date        DATE,
-    company_id      UUID         NOT NULL,
-    FOREIGN KEY (project_manager) REFERENCES Employee (id),
+    company_id CHAR(36),
     FOREIGN KEY (company_id) REFERENCES Company (id)
 );
 
 CREATE TABLE Employee
 (
-    id            UUID PRIMARY KEY,
-    first_name    VARCHAR(255) NOT NULL,
-    last_name     VARCHAR(255) NOT NULL,
-    contact_info  VARCHAR(255) NOT NULL,
+    id            CHAR(36) PRIMARY KEY,
+    first_name    VARCHAR(255),
+    last_name     VARCHAR(255),
+    contact_info  VARCHAR(255),
     age           INT,
-    supervision   UUID,
+    supervision   CHAR(36),
     hire_date     DATE,
     end_date      DATE,
-    department_id UUID,
+    department_id CHAR(36),
     FOREIGN KEY (department_id) REFERENCES Department (id)
 );
 
 CREATE TABLE Role_Authority
 (
-    role_id      UUID,
-    authority_id UUID,
+    role_id      CHAR(36),
+    authority_id CHAR(36),
     PRIMARY KEY (role_id, authority_id),
     FOREIGN KEY (role_id) REFERENCES Role (role_id),
     FOREIGN KEY (authority_id) REFERENCES Authority (id)
+);
+
+CREATE TABLE ConstructionProject
+(
+    id              CHAR(36) PRIMARY KEY,
+    project_name    VARCHAR(255),
+    address         VARCHAR(255),
+    description     TEXT,
+    project_manager CHAR(36),
+    start_date      DATE,
+    end_date        DATE,
+    company_id      CHAR(36),
+    FOREIGN KEY (project_manager) REFERENCES Employee (id),
+    FOREIGN KEY (company_id) REFERENCES Company (id)
+);
+
+CREATE TABLE Material
+(
+    id                CHAR(36) PRIMARY KEY,
+    name              VARCHAR(255),
+    type              VARCHAR(255),
+    quantity_in_stock INT
+);
+
+CREATE TABLE Tool
+(
+    id            CHAR(36) PRIMARY KEY,
+    serial_number INT
 );

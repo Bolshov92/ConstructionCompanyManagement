@@ -33,6 +33,10 @@ public class User {
     @Column(name = "registrationDate")
     private Date registrationDate;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserInfo userInfo;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

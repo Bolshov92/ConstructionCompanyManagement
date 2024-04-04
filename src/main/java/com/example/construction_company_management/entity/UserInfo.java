@@ -14,24 +14,27 @@ import java.util.UUID;
 @NoArgsConstructor
 @Table(name = "user_info")
 public class UserInfo {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userId;
 
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "password")
     private String password;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "userInfo")
     private User user;
 
-    @ManyToMany(mappedBy = "roleSet")
-    private Set<Role> roleSet;
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 }

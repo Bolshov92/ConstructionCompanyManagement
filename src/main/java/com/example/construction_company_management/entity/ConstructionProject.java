@@ -40,6 +40,10 @@ public class ConstructionProject {
     @JoinColumn(name = "manager_id")
     private Employee projectManager;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
