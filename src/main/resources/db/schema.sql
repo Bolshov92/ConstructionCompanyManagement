@@ -1,97 +1,44 @@
-CREATE TABLE Authority
-(
-    id        CHAR(36) PRIMARY KEY,
-    authority VARCHAR(255)
-);
+-- Вставка данных в таблицу 'authority'
+INSERT INTO authority (id, authority)
+VALUES ('1', 'ROLE_ADMIN'),
+       ('2', 'ROLE_USER');
 
-CREATE TABLE Role
-(
-    role_id   CHAR(36) PRIMARY KEY,
-    role_name VARCHAR(255)
-);
+-- Вставка данных в таблицу 'roles'
+INSERT INTO roles (role_id, role_name)
+VALUES ('1', 'Administrator'),
+       ('2', 'User');
 
-CREATE TABLE User
-(
-    user_id           CHAR(36) PRIMARY KEY,
-    first_name        VARCHAR(255),
-    last_name         VARCHAR(255),
-    date_of_birth     DATE,
-    registration_date DATE
-);
+-- Вставка данных в таблицу 'user_info'
+INSERT INTO user_info (user_id, user_name, password, phone_number)
+VALUES ('1', 'admin', 'admin_password', '123456789');
 
-CREATE TABLE UserInfo
-(
-    user_id      CHAR(36) PRIMARY KEY,
-    user_name    VARCHAR(255),
-    password     VARCHAR(255),
-    phone_number VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES User (user_id)
-);
+-- Вставка данных в таблицу 'user'
+INSERT INTO user (user_id, first_name, last_name, date_of_birth, registrationDate)
+VALUES ('1', 'John', 'Doe', '1990-01-01', '2020-01-01');
 
-CREATE TABLE Company
-(
-    id   CHAR(36) PRIMARY KEY,
-    name VARCHAR(255),
-    turnover DOUBLE,
-    expenses DOUBLE,
-    profit DOUBLE
-);
+-- Вставка данных в таблицу 'department'
+INSERT INTO department (id, projects)
+VALUES ('1', 'Project A'),
+       ('2', 'Project B');
 
-CREATE TABLE Department
-(
-    id         CHAR(36) PRIMARY KEY,
-    projects   TEXT,
-    company_id CHAR(36),
-    FOREIGN KEY (company_id) REFERENCES Company (id)
-);
+-- Вставка данных в таблицу 'company'
+INSERT INTO company (id, name, turnover, expenses, profit)
+VALUES ('1', 'ABC Construction', 1000000.00, 800000.00, 200000.00);
 
-CREATE TABLE Employee
-(
-    id            CHAR(36) PRIMARY KEY,
-    first_name    VARCHAR(255),
-    last_name     VARCHAR(255),
-    contact_info  VARCHAR(255),
-    age           INT,
-    supervision   CHAR(36),
-    hire_date     DATE,
-    end_date      DATE,
-    department_id CHAR(36),
-    FOREIGN KEY (department_id) REFERENCES Department (id)
-);
+-- Вставка данных в таблицу 'employee'
+INSERT INTO employee (id, first_name, last_name, contact_info, age, hireDate, endDate, department_id)
+VALUES ('1', 'Alice', 'Smith', 'alice@example.com', 30, '2020-01-01', NULL, '1');
 
-CREATE TABLE Role_Authority
-(
-    role_id      CHAR(36),
-    authority_id CHAR(36),
-    PRIMARY KEY (role_id, authority_id),
-    FOREIGN KEY (role_id) REFERENCES Role (role_id),
-    FOREIGN KEY (authority_id) REFERENCES Authority (id)
-);
+-- Вставка данных в таблицу 'construction_project'
+INSERT INTO construction_project (id, project_name, address, description, startDate, endDate, manager_id, company_id)
+VALUES ('1', 'Project X', '123 Main St', 'Description of Project X', '2020-02-01', '2021-01-01', '1', '1');
 
-CREATE TABLE ConstructionProject
-(
-    id              CHAR(36) PRIMARY KEY,
-    project_name    VARCHAR(255),
-    address         VARCHAR(255),
-    description     TEXT,
-    project_manager CHAR(36),
-    start_date      DATE,
-    end_date        DATE,
-    company_id      CHAR(36),
-    FOREIGN KEY (project_manager) REFERENCES Employee (id),
-    FOREIGN KEY (company_id) REFERENCES Company (id)
-);
+-- Вставка данных в таблицу 'tool'
+INSERT INTO tool (id, serial_number)
+VALUES ('1', 123456),
+       ('2', 789012);
 
-CREATE TABLE Material
-(
-    id                CHAR(36) PRIMARY KEY,
-    name              VARCHAR(255),
-    type              VARCHAR(255),
-    quantity_in_stock INT
-);
-
-CREATE TABLE Tool
-(
-    id            CHAR(36) PRIMARY KEY,
-    serial_number INT
-);
+-- Вставка данных в таблицу 'material'
+INSERT INTO material (id, name, type, quantity_in_stock)
+VALUES ('1', 'Bricks', 'Building Material', 1000),
+       ('2', 'Concrete', 'Building Material', 500);
