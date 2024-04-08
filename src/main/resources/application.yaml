@@ -9,12 +9,12 @@ spring:
 
   jpa:
    hibernate:
-    ddl-auto: update
+    ddl-auto: none
 
   sql:
    init:
     schema-locations: classpath:db/schema.sql
-    mode: always
+    mode: never
     data-locations: classpath:db/data.sql
 
 server:
