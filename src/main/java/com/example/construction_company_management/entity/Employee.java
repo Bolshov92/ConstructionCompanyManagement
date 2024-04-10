@@ -1,5 +1,6 @@
 package com.example.construction_company_management.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class Employee {
 
     @Column(name = "endDate")
     private LocalDate endDate;
+
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;

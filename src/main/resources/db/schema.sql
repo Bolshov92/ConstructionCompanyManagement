@@ -5,7 +5,7 @@ CREATE TABLE authority
 );
 
 
-CREATE TABLE roles
+CREATE TABLE role
 (
     role_id   CHAR(36) PRIMARY KEY,
     role_name VARCHAR(255)
