@@ -45,17 +45,17 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "supervision")
-    private Employee superViser;
+    private Employee superWiser;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return getAge() == employee.getAge() && Objects.equals(getId(), employee.getId()) && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getContactInfo(), employee.getContactInfo()) && Objects.equals(getSuperViser(), employee.getSuperViser()) && Objects.equals(getHirDate(), employee.getHirDate()) && Objects.equals(getEndDate(), employee.getEndDate()) && Objects.equals(getDepartment(), employee.getDepartment());
+        return getAge() == employee.getAge() && Objects.equals(getId(), employee.getId()) && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getContactInfo(), employee.getContactInfo()) && Objects.equals(getHirDate(), employee.getHirDate()) && Objects.equals(getEndDate(), employee.getEndDate()) && Objects.equals(getDepartment(), employee.getDepartment()) && Objects.equals(getSuperWiser(), employee.getSuperWiser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getContactInfo(), getAge(), getSuperViser(), getHirDate(), getEndDate(), getDepartment());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getContactInfo(), getAge(), getHirDate(), getEndDate(), getDepartment(), getSuperWiser());
     }
 }

@@ -1,5 +1,5 @@
 INSERT INTO authority (id, authority)
-VALUES ('b70390f1-c270-4a0c-a236-74ad62ce1712', 'User1');
+VALUES ('d5b6c663-b49b-42b1-a633-ed35ea508cc0', 'User1');
 
 INSERT INTO role (role_id, role_name)
 VALUES ('d5b6c663-b49b-42b1-a633-ed35ea508cc0', 'ROLE_ADMIN'),
@@ -30,6 +30,6 @@ INSERT INTO material (id, name, type, quantity_in_stock)
 VALUES ('a7c5bfc6-8cba-4857-85de-403f613d5df7', 'Bricks', 'Building Material', 1000),
        ('7d5a9a4b-9185-42a4-abe2-290c45de630b', 'Concrete', 'Building Material', 500);
 
--- INSERT INTO construction_project (id, project_name, address, description, startDate, endDate, manager_id, company_id)
--- VALUES ('f2fba9a3-dbc9-4c35-8c06-9b3cc4f5b244', 'Project X', '123 Main St', 'Description of Project X', '2020-02-01',
---         NULL, '02614a58-e256-482c-9284-c188c00a7ec6', '21fbc398-0515-419e-8c57-3e3f21e554c4');
+INSERT INTO construction_project (id, project_name, address, description, startDate, endDate, manager_id, company_id)
+VALUES ('f2fba9a3-dbc9-4c35-8c06-9b3cc4f5b244', 'Project X', '123 Main St', 'Description of Project X', '2020-02-01',
+        NULL, '639d7bc4-9845-40aa-84c8-b0f1dced6732', '21fbc398-0515-419e-8c57-3e3f21e554c4');
