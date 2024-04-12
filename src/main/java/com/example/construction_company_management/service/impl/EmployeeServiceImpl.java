@@ -8,12 +8,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
+
+
     @Override
     public Employee getEmployeeById(UUID id) {
+        if(id==null){
+            throw new IllegalArgumentException("Employee id is null");
+        }
         return employeeRepository.getEmployeeById(id);
     }
 }

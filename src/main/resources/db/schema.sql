@@ -1,3 +1,14 @@
+-- DROP TABLE IF EXISTS authority;
+-- DROP TABLE IF EXISTS role;
+-- DROP TABLE IF EXISTS user_info
+-- DROP TABLE IF EXISTS user;
+-- DROP TABLE IF EXISTS department;
+-- DROP TABLE IF EXISTS company;
+-- DROP TABLE IF EXISTS employee;
+-- DROP TABLE IF EXISTS construction_project;
+-- DROP TABLE IF EXISTS tool;
+-- DROP TABLE IF EXISTS  material;
+
 CREATE TABLE authority
 (
     id        CHAR(36) PRIMARY KEY,
