@@ -18,9 +18,12 @@ VALUES ('02614a58-e256-482c-9284-c188c00a7ec6', 'Project A'),
 INSERT INTO company (id, name, turnover, expenses, profit)
 VALUES ('21fbc398-0515-419e-8c57-3e3f21e554c4', 'ABC Construction', 1000000.00, 800000.00, 200000.00);
 
-INSERT INTO employee (id, first_name, last_name, contact_info, age, hireDate, endDate, department_id)
-VALUES ('639d7bc4-9845-40aa-84c8-b0f1dced6732', 'Alice', 'Smith', 'alice@example.com', 30, '2020-01-01', NULL,
+INSERT INTO employee (id, first_name, last_name, contact_info, age, hire_date, end_date, department_id)
+VALUES ('639d7bc4-9845-40aa-84c8-b0f1dced6732', 'Alice', 'Smith', 'alice@example.com', 30, '2020-01-01','2023-01-01',
+        '02614a58-e256-482c-9284-c188c00a7ec6'),
+       ('a2b4f08a-734e-42c7-83e1-ccea7d50a461', 'Jake', 'Min', 'jake@example.com', 20, '2022-01-01','2023-01-01' ,
         '02614a58-e256-482c-9284-c188c00a7ec6');
+
 
 INSERT INTO tool (id, serial_number)
 VALUES ('8bdf32e0-0847-4bd8-8cd1-235602db6e7f', 123456),

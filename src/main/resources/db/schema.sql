@@ -1,13 +1,13 @@
 -- DROP TABLE IF EXISTS authority;
 -- DROP TABLE IF EXISTS role;
--- DROP TABLE IF EXISTS user_info
+-- DROP TABLE IF EXISTS user_info;
 -- DROP TABLE IF EXISTS user;
 -- DROP TABLE IF EXISTS department;
 -- DROP TABLE IF EXISTS company;
 -- DROP TABLE IF EXISTS employee;
 -- DROP TABLE IF EXISTS construction_project;
 -- DROP TABLE IF EXISTS tool;
--- DROP TABLE IF EXISTS  material;
+-- DROP TABLE IF EXISTS material;
 
 CREATE TABLE authority
 (
@@ -15,13 +15,11 @@ CREATE TABLE authority
     authority VARCHAR(255)
 );
 
-
 CREATE TABLE role
 (
     role_id   CHAR(36) PRIMARY KEY,
     role_name VARCHAR(255)
 );
-
 
 CREATE TABLE user_info
 (
@@ -30,7 +28,6 @@ CREATE TABLE user_info
     password     VARCHAR(255),
     phone_number VARCHAR(20) NOT NULL UNIQUE
 );
-
 
 CREATE TABLE user
 (
@@ -42,13 +39,11 @@ CREATE TABLE user
     FOREIGN KEY (user_id) REFERENCES user_info (user_id)
 );
 
-
 CREATE TABLE department
 (
     id       CHAR(36) PRIMARY KEY,
     projects VARCHAR(255)
 );
-
 
 CREATE TABLE company
 (
@@ -59,7 +54,6 @@ CREATE TABLE company
     profit DOUBLE
 );
 
-
 CREATE TABLE employee
 (
     id            CHAR(36) PRIMARY KEY,
@@ -67,14 +61,13 @@ CREATE TABLE employee
     last_name     VARCHAR(255),
     contact_info  VARCHAR(255),
     age           INT,
-    hireDate      DATE,
-    endDate       DATE,
+    hire_date      DATE,
+    end_date       DATE,
     department_id CHAR(36),
     supervision   CHAR(36),
     FOREIGN KEY (department_id) REFERENCES department (id),
     FOREIGN KEY (supervision) REFERENCES employee (id)
 );
-
 
 CREATE TABLE construction_project
 (
@@ -90,13 +83,11 @@ CREATE TABLE construction_project
     FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
-
 CREATE TABLE tool
 (
     id            CHAR(36) PRIMARY KEY,
     serial_number INT
 );
-
 
 CREATE TABLE material
 (
