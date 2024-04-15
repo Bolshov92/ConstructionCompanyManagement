@@ -17,8 +17,8 @@ import java.util.UUID;
 @Table(name = "employee")
 public class Employee {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
 
     @Column(name = "first_name")
@@ -33,10 +33,10 @@ public class Employee {
     @Column(name = "age")
     private int age;
 
-    @Column(name = "hireDate")
-    private LocalDate hirDate;
+    @Column(name = "hire_date")
+    private LocalDate hireDate;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     @ManyToOne
@@ -51,11 +51,11 @@ public class Employee {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return getAge() == employee.getAge() && Objects.equals(getId(), employee.getId()) && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getContactInfo(), employee.getContactInfo()) && Objects.equals(getHirDate(), employee.getHirDate()) && Objects.equals(getEndDate(), employee.getEndDate()) && Objects.equals(getDepartment(), employee.getDepartment()) && Objects.equals(getSuperWiser(), employee.getSuperWiser());
+        return getAge() == employee.getAge() && Objects.equals(getId(), employee.getId()) && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getContactInfo(), employee.getContactInfo()) && Objects.equals(getHireDate(), employee.getHireDate()) && Objects.equals(getEndDate(), employee.getEndDate()) && Objects.equals(getDepartment(), employee.getDepartment()) && Objects.equals(getSuperWiser(), employee.getSuperWiser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getContactInfo(), getAge(), getHirDate(), getEndDate(), getDepartment(), getSuperWiser());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getContactInfo(), getAge(), getHireDate(), getEndDate(), getDepartment(), getSuperWiser());
     }
 }

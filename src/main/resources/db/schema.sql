@@ -1,29 +1,37 @@
-CREATE TABLE authority
+DROP TABLE IF EXISTS tool;
+DROP TABLE IF EXISTS material;
+DROP TABLE IF EXISTS construction_project;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS user_info;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS authority;
+
+CREATE TABLE IF NOT EXISTS authority
 (
-    id        CHAR(36) PRIMARY KEY,
+    id        BINARY(16) PRIMARY KEY,
     authority VARCHAR(255)
 );
 
-
-CREATE TABLE role
+CREATE TABLE IF NOT EXISTS role
 (
-    role_id   CHAR(36) PRIMARY KEY,
+    role_id   BINARY(16) PRIMARY KEY,
     role_name VARCHAR(255)
 );
 
-
-CREATE TABLE user_info
+CREATE TABLE IF NOT EXISTS user_info
 (
-    user_id      CHAR(36) PRIMARY KEY,
+    user_id      BINARY(16) PRIMARY KEY,
     user_name    VARCHAR(255),
     password     VARCHAR(255),
     phone_number VARCHAR(20) NOT NULL UNIQUE
 );
 
-
-CREATE TABLE user
+CREATE TABLE IF NOT EXISTS user
 (
-    user_id          CHAR(36) PRIMARY KEY,
+    user_id          BINARY(16) PRIMARY KEY,
     first_name       VARCHAR(255),
     last_name        VARCHAR(255),
     date_of_birth    DATE,
@@ -31,65 +39,59 @@ CREATE TABLE user
     FOREIGN KEY (user_id) REFERENCES user_info (user_id)
 );
 
-
-CREATE TABLE department
+CREATE TABLE IF NOT EXISTS department
 (
-    id       CHAR(36) PRIMARY KEY,
+    id       BINARY(16) PRIMARY KEY,
     projects VARCHAR(255)
 );
 
-
-CREATE TABLE company
+CREATE TABLE IF NOT EXISTS company
 (
-    id   CHAR(36) PRIMARY KEY,
+    id   BINARY(16) PRIMARY KEY,
     name VARCHAR(255),
     turnover DOUBLE,
     expenses DOUBLE,
     profit DOUBLE
 );
 
-
-CREATE TABLE employee
+CREATE TABLE IF NOT EXISTS employee
 (
-    id            CHAR(36) PRIMARY KEY,
+    id            BINARY(16) PRIMARY KEY,
     first_name    VARCHAR(255),
     last_name     VARCHAR(255),
     contact_info  VARCHAR(255),
     age           INT,
-    hireDate      DATE,
-    endDate       DATE,
-    department_id CHAR(36),
-    supervision   CHAR(36),
+    hire_date      DATE,
+    end_date       DATE,
+    department_id BINARY(16),
+    supervision   BINARY(16),
     FOREIGN KEY (department_id) REFERENCES department (id),
     FOREIGN KEY (supervision) REFERENCES employee (id)
 );
 
-
-CREATE TABLE construction_project
+CREATE TABLE IF NOT EXISTS construction_project
 (
-    id           CHAR(36) PRIMARY KEY,
+    id           BINARY(16) PRIMARY KEY,
     project_name VARCHAR(255),
     address      VARCHAR(255),
     description  VARCHAR(255),
     startDate    DATE,
     endDate      DATE,
-    manager_id   CHAR(36),
-    company_id   CHAR(36),
+    manager_id   BINARY(16),
+    company_id   BINARY(16),
     FOREIGN KEY (manager_id) REFERENCES employee (id),
     FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
-
-CREATE TABLE tool
+CREATE TABLE IF NOT EXISTS tool
 (
-    id            CHAR(36) PRIMARY KEY,
+    id            BINARY(16) PRIMARY KEY,
     serial_number INT
 );
 
-
-CREATE TABLE material
+CREATE TABLE IF NOT EXISTS material
 (
-    id                CHAR(36) PRIMARY KEY,
+    id                BINARY(16) PRIMARY KEY,
     name              VARCHAR(255),
     type              VARCHAR(255),
     quantity_in_stock INT
