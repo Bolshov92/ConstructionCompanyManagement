@@ -26,7 +26,7 @@ VALUES (UUID_TO_BIN('639d7bc4-9845-40aa-84c8-b0f1dced6732'), 'Alice', 'Smith', '
 
 INSERT INTO construction_project (id, project_name, address, description, startDate, endDate, manager_id, company_id)
 VALUES (UUID_TO_BIN('f2fba9a3-dbc9-4c35-8c06-9b3cc4f5b244'), 'Project X', '123 Main St', 'Description of Project X', '2020-02-01',
-        NULL, UUID_TO_BIN('639d7bc4-9845-40aa-84c8-b0f1dced6732'), UUID_TO_BIN('21fbc398-0515-419e-8c57-3e3f21e554c4'));
+        NULL, NULL, UUID_TO_BIN('21fbc398-0515-419e-8c57-3e3f21e554c4'));
 
 INSERT INTO tool (id, serial_number)
 VALUES (UUID_TO_BIN('8bdf32e0-0847-4bd8-8cd1-235602db6e7f'), 123456),
