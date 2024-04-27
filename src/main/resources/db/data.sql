@@ -11,7 +11,7 @@ VALUES (UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'), 'admin', 'admin_pas
 INSERT INTO user (user_id, first_name, last_name, date_of_birth, registrationDate)
 VALUES (UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'), 'John', 'Doe', '1990-01-01', '2020-01-01');
 
-INSERT INTO department (id, depName)
+INSERT INTO department (id, dep_name)
 VALUES (UUID_TO_BIN('02614a58-e256-482c-9284-c188c00a7ec6'), 'Builders'),
        (UUID_TO_BIN('cb5d6730-c117-473b-9ded-d4cf57a53d75'), 'Drivers');
 

@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS user
 CREATE TABLE IF NOT EXISTS department
 (
     id       BINARY(16) PRIMARY KEY,
-    depName VARCHAR(255)
+    dep_name VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS company

@@ -2,12 +2,11 @@ package com.example.construction_company_management.service.impl;
 
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
+import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
-import com.example.construction_company_management.exсeption.EmployeeAlreadyExists;
-import com.example.construction_company_management.exсeption.EmployeeIsNotFound;
-import com.example.construction_company_management.exсeption.EmployeeNotExistExсeption;
-import com.example.construction_company_management.exсeption.ErrorMessage;
+import com.example.construction_company_management.exсeption.*;
 import com.example.construction_company_management.mapper.EmployeeMapper;
+import com.example.construction_company_management.repository.DepartmentRepository;
 import com.example.construction_company_management.repository.EmployeeRepository;
 import com.example.construction_company_management.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +20,7 @@ import java.util.UUID;
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
+    private final DepartmentRepository departmentRepository;
 
 
     @Override
@@ -61,7 +61,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employee != null) {
             throw new EmployeeAlreadyExists(ErrorMessage.EMPLOYEE_ALREADY_EXISTS);
         }
+        String depName = employeeCreationDto.getDepName();
+        Department department = departmentRepository.findByDepName(depName);
+        if(department == null){
+            throw new DepartmentNotFoundException(ErrorMessage.DEPARTMENT_IS_NOT_FOUND);
+        }
+
         Employee entity = employeeMapper.toEntity(employeeCreationDto);
+        entity.setDepartment(department);
         Employee employeeAfterCreation = employeeRepository.save(entity);
         return employeeMapper.toDto(employeeAfterCreation);
     }

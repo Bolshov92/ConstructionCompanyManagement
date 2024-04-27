@@ -17,7 +17,8 @@ public interface EmployeeMapper {
     @Mapping(target = "age", source = "age")
     @Mapping(target = "hireDate", source = "hireDate")
     @Mapping(target = "endDate", source = "endDate")
-    @Mapping(target = "department.depName", source = "departmentName")
+    @Mapping(target = "department.depName", source = "depName")
+    @Mapping(target = "id", ignore = true)
 
 
     Employee toEntity(EmployeeCreateDto employeeCreationDto);

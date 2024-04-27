@@ -14,6 +14,6 @@ public class EmployeeCreateDto {
     int age;
     LocalDate hireDate;
     LocalDate endDate;
-    String departmentName;
+    String depName;
     Employee superWiser;
 }

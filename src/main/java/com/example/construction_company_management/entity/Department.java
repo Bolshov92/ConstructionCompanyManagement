@@ -20,7 +20,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "department")
+    @Column(name = "dep_name")
     private String depName;
 
     @Override
