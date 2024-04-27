@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
+
     @Override
     public Department findByDepName(String depName) {
-      Department department = departmentRepository.findByDepName(depName);
-      if(department == null){
-          throw new DepartmentNotFoundException(ErrorMessage.DEPARTMENT_IS_NOT_FOUND);
-      }
-      return department;
+        Department department = departmentRepository.findByDepName(depName);
+        if (department == null) {
+            throw new DepartmentNotFoundException(ErrorMessage.DEPARTMENT_IS_NOT_FOUND);
+        }
+        return department;
     }
 }

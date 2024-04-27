@@ -1,7 +1,9 @@
 package com.example.construction_company_management.service.impl;
 
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
+import com.example.construction_company_management.dto.EmployeeAfterUpdateDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
+import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.exсeption.*;
@@ -12,6 +14,7 @@ import com.example.construction_company_management.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -40,20 +43,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
+
     @Override
-    public void updateEmployee(UUID id, Employee employeeDetails) {
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND));
-
-
-        employee.setFirstName(employeeDetails.getFirstName());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setAge(employeeDetails.getAge());
-        employee.setContactInfo(employeeDetails.getContactInfo());
-
-
-        employeeRepository.save(employee);
+    public EmployeeAfterUpdateDto updateEmployee(UUID id, EmployeeUpdateDto employeeUpdateDto) {
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+        if (optionalEmployee.isEmpty()) {
+            throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND);
+        }
+        Employee employee = optionalEmployee.get();
+        employeeMapper.toUpdate(employeeUpdateDto, employee);
+        Employee updateEmployee = employeeRepository.save(employee);
+        return employeeMapper.afterUpdateDto(updateEmployee);
     }
+
 
     @Override
     public EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeCreationDto) {
@@ -63,7 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         String depName = employeeCreationDto.getDepName();
         Department department = departmentRepository.findByDepName(depName);
-        if(department == null){
+        if (department == null) {
             throw new DepartmentNotFoundException(ErrorMessage.DEPARTMENT_IS_NOT_FOUND);
         }
 
