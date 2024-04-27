@@ -11,9 +11,9 @@ VALUES (UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'), 'admin', 'admin_pas
 INSERT INTO user (user_id, first_name, last_name, date_of_birth, registrationDate)
 VALUES (UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'), 'John', 'Doe', '1990-01-01', '2020-01-01');
 
-INSERT INTO department (id, projects)
-VALUES (UUID_TO_BIN('02614a58-e256-482c-9284-c188c00a7ec6'), 'Project A'),
-       (UUID_TO_BIN('cb5d6730-c117-473b-9ded-d4cf57a53d75'), 'Project B');
+INSERT INTO department (id, depName)
+VALUES (UUID_TO_BIN('02614a58-e256-482c-9284-c188c00a7ec6'), 'Builders'),
+       (UUID_TO_BIN('cb5d6730-c117-473b-9ded-d4cf57a53d75'), 'Drivers');
 
 INSERT INTO company (id, name, turnover, expenses, profit)
 VALUES (UUID_TO_BIN('21fbc398-0515-419e-8c57-3e3f21e554c4'), 'ABC Construction', 1000000.00, 800000.00, 200000.00);

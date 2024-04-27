@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS user
 CREATE TABLE IF NOT EXISTS department
 (
     id       BINARY(16) PRIMARY KEY,
-    projects VARCHAR(255)
+    depName VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS company
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS company
 
 CREATE TABLE IF NOT EXISTS employee
 (
-    id            BINARY(16) PRIMARY KEY,
+    id           BINARY(16) PRIMARY KEY,
     first_name    VARCHAR(255),
     last_name     VARCHAR(255),
     contact_info  VARCHAR(255),

@@ -1,5 +1,7 @@
 package com.example.construction_company_management.service;
 
+import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
+import com.example.construction_company_management.dto.EmployeeCreateDto;
 import com.example.construction_company_management.entity.Employee;
 
 import java.util.UUID;
@@ -11,5 +13,5 @@ public interface EmployeeService {
 
     void updateEmployee(UUID id, Employee employeeDetails);
 
-    void createEmployee(Employee employee);
+    EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeAfterCreationDto);
 }

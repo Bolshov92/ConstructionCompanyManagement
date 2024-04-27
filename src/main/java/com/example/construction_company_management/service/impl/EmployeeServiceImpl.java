@@ -1,9 +1,13 @@
 package com.example.construction_company_management.service.impl;
 
+import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
+import com.example.construction_company_management.dto.EmployeeCreateDto;
 import com.example.construction_company_management.entity.Employee;
+import com.example.construction_company_management.exсeption.EmployeeAlreadyExists;
 import com.example.construction_company_management.exсeption.EmployeeIsNotFound;
 import com.example.construction_company_management.exсeption.EmployeeNotExistExсeption;
 import com.example.construction_company_management.exсeption.ErrorMessage;
+import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.repository.EmployeeRepository;
 import com.example.construction_company_management.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +20,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
+    private final EmployeeMapper employeeMapper;
 
 
     @Override
@@ -51,7 +56,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void createEmployee(Employee employee) {
-        employeeRepository.save(employee);
+    public EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeCreationDto) {
+        Employee employee = employeeRepository.findByLastName(employeeCreationDto.getLastName());
+        if (employee != null) {
+            throw new EmployeeAlreadyExists(ErrorMessage.EMPLOYEE_ALREADY_EXISTS);
+        }
+        Employee entity = employeeMapper.toEntity(employeeCreationDto);
+        Employee employeeAfterCreation = employeeRepository.save(entity);
+        return employeeMapper.toDto(employeeAfterCreation);
     }
 }
