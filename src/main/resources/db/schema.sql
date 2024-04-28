@@ -26,16 +26,17 @@ CREATE TABLE IF NOT EXISTS user_info
     user_id      BINARY(16) PRIMARY KEY,
     user_name    VARCHAR(255),
     password     VARCHAR(255),
-    phone_number VARCHAR(20) NOT NULL UNIQUE
+    phone_number VARCHAR(20)
 );
 
 CREATE TABLE IF NOT EXISTS user
 (
-    user_id          BINARY(16) PRIMARY KEY,
-    first_name       VARCHAR(255),
-    last_name        VARCHAR(255),
-    date_of_birth    DATE,
-    registrationDate DATE,
+    id                BINARY(16) PRIMARY KEY,
+    first_name        VARCHAR(255),
+    last_name         VARCHAR(255),
+    date_of_birth     DATE,
+    registration_date DATE,
+    user_id           BINARY(16),
     FOREIGN KEY (user_id) REFERENCES user_info (user_id)
 );
 
@@ -47,22 +48,22 @@ CREATE TABLE IF NOT EXISTS department
 
 CREATE TABLE IF NOT EXISTS company
 (
-    id   BINARY(16) PRIMARY KEY,
-    name VARCHAR(255),
+    id       BINARY(16) PRIMARY KEY,
+    name     VARCHAR(255),
     turnover DOUBLE,
     expenses DOUBLE,
-    profit DOUBLE
+    profit   DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS employee
 (
-    id           BINARY(16) PRIMARY KEY,
+    id            BINARY(16) PRIMARY KEY,
     first_name    VARCHAR(255),
     last_name     VARCHAR(255),
     contact_info  VARCHAR(255),
     age           INT,
-    hire_date      DATE,
-    end_date       DATE,
+    hire_date     DATE,
+    end_date      DATE,
     department_id BINARY(16),
     supervision   BINARY(16),
     FOREIGN KEY (department_id) REFERENCES department (id),
