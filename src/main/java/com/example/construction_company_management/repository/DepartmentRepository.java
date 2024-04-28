@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department, UUID> { Department findByDepName(String depName);
+public interface DepartmentRepository extends JpaRepository<Department, UUID> {
+    Department findByDepName(String depName);
 }

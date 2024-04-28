@@ -29,7 +29,7 @@ public interface EmployeeMapper {
     @Mapping(target = "age", source = "employeeUpdateDto.age")
     @Mapping(target = "endDate", source = "employeeUpdateDto.endDate")
     @Mapping(target = "id", ignore = true)
-    Employee toUpdate(EmployeeUpdateDto employeeUpdateDto, @MappingTarget Employee employee);
+    void toUpdate(EmployeeUpdateDto employeeUpdateDto, @MappingTarget Employee employee);
 
     @Mapping(target = "id", source = "id")
     EmployeeAfterUpdateDto afterUpdateDto(Employee employeeAfterUpdate);

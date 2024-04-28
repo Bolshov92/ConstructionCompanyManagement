@@ -4,7 +4,6 @@ import com.example.construction_company_management.entity.Employee;
 import lombok.Value;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Value
 public class EmployeeUpdateDto {

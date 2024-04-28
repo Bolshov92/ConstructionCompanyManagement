@@ -1,6 +1,5 @@
 package com.example.construction_company_management.dto;
 
-import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
 import lombok.Value;
 
