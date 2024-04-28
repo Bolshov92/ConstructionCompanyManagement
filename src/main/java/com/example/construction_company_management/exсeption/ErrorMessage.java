@@ -5,4 +5,5 @@ public class ErrorMessage {
     public static final String EMPLOYEE_IS_NOT_FOUND = "EMPLOYEE_IS_NOT_FOUND";
     public static final String EMPLOYEE_ALREADY_EXISTS = "EMPLOYEE_ALREADY_EXISTS";
     public static final String DEPARTMENT_IS_NOT_FOUND = "DEPARTMENT_IS_NOT_FOUND";
+    public static final String DEPARTMENT_ALREADY_EXISTS = "DEPARTMENT_ALREADY_EXISTS";
 }
