@@ -1,3 +1,4 @@
+
 INSERT INTO authority (id, authority)
 VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1');
 
@@ -35,4 +36,3 @@ VALUES (UUID_TO_BIN('8bdf32e0-0847-4bd8-8cd1-235602db6e7f'), 123456),
 INSERT INTO material (id, name, type, quantity_in_stock)
 VALUES (UUID_TO_BIN('a7c5bfc6-8cba-4857-85de-403f613d5df7'), 'Bricks', 'Building Material', 1000),
        (UUID_TO_BIN('7d5a9a4b-9185-42a4-abe2-290c45de630b'), 'Concrete', 'Building Material', 500);
-
