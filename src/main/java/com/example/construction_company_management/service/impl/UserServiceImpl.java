@@ -2,8 +2,10 @@ package com.example.construction_company_management.service.impl;
 
 import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserCreateDto;
+import com.example.construction_company_management.entity.Role;
 import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.entity.UserInfo;
+import com.example.construction_company_management.entity.enums.RoleName;
 import com.example.construction_company_management.exсeption.ErrorMessage;
 import com.example.construction_company_management.exсeption.UserNotFoundException;
 import com.example.construction_company_management.mapper.UserMapper;
@@ -27,6 +29,7 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final AuthorityRepository authorityRepository;
 
+
     @Override
     public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
 
@@ -37,8 +40,13 @@ public class UserServiceImpl implements UserService {
 
         UserInfo savedUserInfo = userInfoRepository.save(userInfo);
 
+        RoleName roleName = RoleName.valueOf(userCreateDto.getRoleName());
+        Role role = roleRepository.findByRoleName(roleName.name());
+
+
         User user = new User();
         user.setUserInfo(savedUserInfo);
+        user.setRole(role);
         user.setFirstName(userCreateDto.getFirstName());
         user.setLastName(userCreateDto.getLastName());
         user.setDateOfBirth(userCreateDto.getDateOfBirth());
@@ -46,6 +54,10 @@ public class UserServiceImpl implements UserService {
         user.setUserInfo(savedUserInfo);
 
         User savedUser = userRepository.save(user);
+        UserAfterCreationDto userAfterCreationDto = userMapper.toDto(savedUser);
+        userAfterCreationDto.setUserId(String.valueOf(savedUser.getId()));
+
+        return userAfterCreationDto;
 //        Role userRole = roleRepository.findByRoleName("ROLE_USER");
 //        if(userRole == null){
 //            userRole = new Role();
@@ -56,13 +68,11 @@ public class UserServiceImpl implements UserService {
 //        authority.setUser(savedUser);
 //        authority.setRole(userRole);
 //        authorityRepository.save(authority);
-
-        return userMapper.toDto(savedUser);
     }
 
     @Override
     public void deleteUserById(UUID id) {
-        if(!userRepository.existsById(id)){
+        if (!userRepository.existsById(id)) {
             throw new UserNotFoundException(ErrorMessage.USER_IS_NOT_FOUND);
         }
         userRepository.deleteById(id);

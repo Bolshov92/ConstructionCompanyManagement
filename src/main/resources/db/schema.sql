@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS authority
 CREATE TABLE IF NOT EXISTS role
 (
     role_id   BINARY(16) PRIMARY KEY,
-    role_name VARCHAR(255)
+    role_name VARCHAR(255),
+    user_id   BINARY(16)
 );
 
 CREATE TABLE IF NOT EXISTS user_info
@@ -36,8 +37,12 @@ CREATE TABLE IF NOT EXISTS user
     last_name         VARCHAR(255),
     date_of_birth     DATE,
     registration_date DATE,
+    role_name         VARCHAR(255),
     user_id           BINARY(16),
-    FOREIGN KEY (user_id) REFERENCES user_info (user_id)
+    role_id           BINARY(16),
+    FOREIGN KEY (user_id) REFERENCES user_info (user_id),
+    FOREIGN KEY (role_id) REFERENCES role (role_id)
+
 );
 
 CREATE TABLE IF NOT EXISTS department

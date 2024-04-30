@@ -2,6 +2,8 @@ package com.example.construction_company_management.controller;
 
 import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserCreateDto;
+import com.example.construction_company_management.entity.Role;
+import com.example.construction_company_management.service.RoleService;
 import com.example.construction_company_management.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

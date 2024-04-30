@@ -1,5 +1,6 @@
 package com.example.construction_company_management.entity;
 
+import com.example.construction_company_management.entity.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,16 +40,24 @@ public class User {
     @JoinColumn(name = "user_id") // Corrected column name
     private UserInfo userInfo;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role_name")
+    private RoleName roleName = RoleName.DEFAULT_USER;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return Objects.equals(getId(), user.getId()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getDateOfBirth(), user.getDateOfBirth()) && Objects.equals(getRegistrationDate(), user.getRegistrationDate()) && Objects.equals(getUserInfo(), user.getUserInfo());
+        return Objects.equals(getId(), user.getId()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getDateOfBirth(), user.getDateOfBirth()) && Objects.equals(getRegistrationDate(), user.getRegistrationDate()) && Objects.equals(getUserInfo(), user.getUserInfo()) && Objects.equals(getRole(), user.getRole());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getDateOfBirth(), getRegistrationDate(), getUserInfo());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getDateOfBirth(), getRegistrationDate(), getUserInfo(), getRole());
     }
 
     @Override
@@ -60,6 +69,7 @@ public class User {
                 ", dateOfBirth=" + dateOfBirth +
                 ", registrationDate=" + registrationDate +
                 ", userInfo=" + userInfo +
+                ", role=" + role +
                 '}';
     }
 }
