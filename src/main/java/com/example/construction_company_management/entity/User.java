@@ -36,7 +36,7 @@ public class User {
     @Column(name = "registrationDate")
     private Date registrationDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id") // Corrected column name
     private UserInfo userInfo;
 
@@ -44,7 +44,7 @@ public class User {
     @Column(name = "role_name")
     private RoleName roleName = RoleName.DEFAULT_USER;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
 

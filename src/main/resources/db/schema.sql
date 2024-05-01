@@ -1,19 +1,13 @@
-DROP TABLE IF EXISTS tool;
-DROP TABLE IF EXISTS material;
-DROP TABLE IF EXISTS construction_project;
-DROP TABLE IF EXISTS employee;
-DROP TABLE IF EXISTS company;
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS user_info;
-DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS authority;
-
-CREATE TABLE IF NOT EXISTS authority
-(
-    id        BINARY(16) PRIMARY KEY,
-    authority VARCHAR(255)
-);
+# DROP TABLE IF EXISTS authority;
+# DROP TABLE IF EXISTS user;
+# DROP TABLE IF EXISTS user_info;
+# DROP TABLE IF EXISTS department;
+# DROP TABLE IF EXISTS company;
+# DROP TABLE IF EXISTS employee;
+# DROP TABLE IF EXISTS construction_project;
+# DROP TABLE IF EXISTS material;
+# DROP TABLE IF EXISTS tool;
+# DROP TABLE IF EXISTS role;
 
 CREATE TABLE IF NOT EXISTS role
 (
@@ -21,6 +15,15 @@ CREATE TABLE IF NOT EXISTS role
     role_name VARCHAR(255),
     user_id   BINARY(16)
 );
+
+CREATE TABLE IF NOT EXISTS authority
+(
+    id        BINARY(16) PRIMARY KEY,
+    authority VARCHAR(255),
+    role_id   BINARY(16),
+    FOREIGN KEY (role_id) REFERENCES role (role_id)
+);
+
 
 CREATE TABLE IF NOT EXISTS user_info
 (

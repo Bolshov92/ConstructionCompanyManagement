@@ -25,7 +25,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeMapper employeeMapper;
     private final DepartmentRepository departmentRepository;
 
-
     @Override
     public Employee getEmployeeById(UUID id) {
         Employee employee = employeeRepository.getEmployeeById(id);

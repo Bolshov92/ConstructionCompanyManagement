@@ -2,6 +2,7 @@ package com.example.construction_company_management.service.impl;
 
 import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserCreateDto;
+import com.example.construction_company_management.entity.Authority;
 import com.example.construction_company_management.entity.Role;
 import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.entity.UserInfo;
@@ -43,6 +44,11 @@ public class UserServiceImpl implements UserService {
         RoleName roleName = RoleName.valueOf(userCreateDto.getRoleName());
         Role role = roleRepository.findByRoleName(roleName.name());
 
+        if (role == null) {
+            role = new Role();
+            role.setRoleName(roleName.name());
+            role = roleRepository.save(role);
+        }
 
         User user = new User();
         user.setUserInfo(savedUserInfo);
@@ -54,20 +60,17 @@ public class UserServiceImpl implements UserService {
         user.setUserInfo(savedUserInfo);
 
         User savedUser = userRepository.save(user);
+
+        Authority authority = new Authority();
+
+        authority.setAuthorityName(userCreateDto.getRoleName());
+        authority.setRole(role);
+        authorityRepository.save(authority);
         UserAfterCreationDto userAfterCreationDto = userMapper.toDto(savedUser);
         userAfterCreationDto.setUserId(String.valueOf(savedUser.getId()));
 
         return userAfterCreationDto;
-//        Role userRole = roleRepository.findByRoleName("ROLE_USER");
-//        if(userRole == null){
-//            userRole = new Role();
-//            userRole.setRoleName("USER");
-//            userRole = roleRepository.save(userRole);
-//        }
-//        Authority authority = new Authority();
-//        authority.setUser(savedUser);
-//        authority.setRole(userRole);
-//        authorityRepository.save(authority);
+
     }
 
     @Override

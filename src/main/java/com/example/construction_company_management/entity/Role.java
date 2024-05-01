@@ -1,6 +1,7 @@
 package com.example.construction_company_management.entity;
 
 import jakarta.persistence.*;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Table(name = "role")
 public class Role {
     @Id
-    @GeneratedValue(generator = "uuid_generator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid_generator")
     @GenericGenerator(name = "uuid_generator", strategy = "com.example.construction_company_management.uuidGenerator.UuidTimeSequenceGenerator")
     @Column(name = "role_id")
     private UUID roleId;
@@ -25,16 +26,11 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "role_authority",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id")
-    )
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private Set<Authority> authorities;
 
     @Override

@@ -13,7 +13,7 @@ import org.mapstruct.ReportingPolicy;
 public interface UserMapper {
     UserAfterCreationDto userAfterCreationDto(User user);
 
-    default  Role map(String roleName){
+    default Role map(String roleName) {
         Role role = new Role();
         role.setRoleName(roleName);
         return role;
@@ -29,7 +29,6 @@ public interface UserMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "role", source = "userCreateDto.roleName")
     User toEntity(UserCreateDto userCreateDto);
-
 
     @Mapping(target = "userId", source = "id")
     UserAfterCreationDto toDto(User user);

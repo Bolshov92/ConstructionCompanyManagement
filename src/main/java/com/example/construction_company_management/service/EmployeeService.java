@@ -10,7 +10,6 @@ public interface EmployeeService {
 
     void deleteEmployeeById(UUID id);
 
-
     EmployeeAfterUpdateDto updateEmployee(UUID id, EmployeeUpdateDto employeeUpdateDto);
 
     EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeAfterCreationDto);
