@@ -1,7 +1,9 @@
 package com.example.construction_company_management.controller;
 
 import com.example.construction_company_management.dto.UserAfterCreationDto;
+import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
+import com.example.construction_company_management.dto.UserUpdateDto;
 import com.example.construction_company_management.entity.Role;
 import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.exсeption.ErrorMessage;
@@ -45,5 +47,11 @@ public class UserController {
     public ResponseEntity<String> userById(@PathVariable("id") UUID id) {
         userService.deleteUserById(id);
         return ResponseEntity.ok("User with id " + id + " was deleted");
+    }
+
+    @PutMapping("/update/{id})")
+            public UserAfterUpdateDto updateUser(@PathVariable ("id")UUID id, @RequestBody UserUpdateDto userUpdateDto ) {
+        return userService.upDateDto(id, userUpdateDto);
+
     }
 }
