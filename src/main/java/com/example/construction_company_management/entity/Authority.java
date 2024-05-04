@@ -27,4 +27,9 @@ public class Authority {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

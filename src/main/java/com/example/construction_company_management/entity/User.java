@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -37,12 +38,16 @@ public class User {
     private Date registrationDate;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_id") // Corrected column name
+    @JoinColumn(name = "user_id")
     private UserInfo userInfo;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Authority> authorities;
+
 
     @Override
     public boolean equals(Object o) {

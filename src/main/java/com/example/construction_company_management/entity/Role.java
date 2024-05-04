@@ -26,10 +26,6 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private Set<Authority> authorities;
 
@@ -37,12 +33,12 @@ public class Role {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Role role)) return false;
-        return Objects.equals(getRoleId(), role.getRoleId()) && Objects.equals(getRoleName(), role.getRoleName()) && Objects.equals(getUser(), role.getUser()) && Objects.equals(getAuthorities(), role.getAuthorities());
+        return Objects.equals(getRoleId(), role.getRoleId()) && Objects.equals(getRoleName(), role.getRoleName()) && Objects.equals(getAuthorities(), role.getAuthorities());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRoleId(), getRoleName(), getUser(), getAuthorities());
+        return Objects.hash(getRoleId(), getRoleName(), getAuthorities());
     }
 
     @Override
@@ -50,7 +46,6 @@ public class Role {
         return "Role{" +
                 "roleId=" + roleId +
                 ", roleName='" + roleName + '\'' +
-                ", user=" + user +
                 ", authorities=" + authorities +
                 '}';
     }

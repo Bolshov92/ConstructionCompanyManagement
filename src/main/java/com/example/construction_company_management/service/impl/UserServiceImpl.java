@@ -4,7 +4,10 @@ import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
-import com.example.construction_company_management.entity.*;
+import com.example.construction_company_management.entity.Authority;
+import com.example.construction_company_management.entity.Role;
+import com.example.construction_company_management.entity.User;
+import com.example.construction_company_management.entity.UserInfo;
 import com.example.construction_company_management.entity.enums.RoleName;
 import com.example.construction_company_management.exсeption.AuthorityIsFoundException;
 import com.example.construction_company_management.exсeption.ErrorMessage;
@@ -19,7 +22,6 @@ import com.example.construction_company_management.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.RoleNotFoundException;
 import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
@@ -68,6 +70,7 @@ public class UserServiceImpl implements UserService {
         Authority authority = new Authority();
         authority.setAuthorityName(roleName.name());
         authority.setRole(role);
+        authority.setUser(user);
         authorityRepository.save(authority);
 
         UserAfterCreationDto userAfterCreationDto = userMapper.toDto(savedUser);
@@ -96,29 +99,30 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userUpdateDto.getLastName());
         user.setDateOfBirth(userUpdateDto.getDateOfBirth());
 
-        if (userUpdateDto.getRoleName() != null) {
-            RoleName roleName = RoleName.valueOf(userUpdateDto.getRoleName());
-            Role role = roleRepository.findByRoleName(roleName.name());
-            if (role == null) {
-                throw new RoleIsNotFoundException( ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + roleName);
-            }
-            user.setRole(role);
-
-            Authority authority = authorityRepository.findByAuthorityName(roleName.name());
-            if (authority == null) {
-                throw new AuthorityIsFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with name: " + roleName);
-            }
+        Role role = roleRepository.findByRoleName(user.getRole().getRoleName());
+        if (role == null) {
+            throw new RoleIsNotFoundException(ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + user.getRole().getRoleName());
         }
 
-        UserInfo userInfo = user.getUserInfo();
-        userInfo.setUserName(userUpdateDto.getUserName());
-        userInfo.setPassword(userUpdateDto.getPassword());
-        userInfo.setPhoneNumber(userUpdateDto.getPhoneNumber());
-        userInfoRepository.save(userInfo);
+        Authority authority = authorityRepository.findByUser(user);
+        if (authority == null) {
+            throw new AuthorityIsFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with id: " + id);
+        }
 
+        if (!role.getRoleName().equals(userUpdateDto.getRoleName())) {
+            Role newRole = roleRepository.findByRoleName(userUpdateDto.getRoleName());
+            if (newRole == null) {
+                throw new RoleIsNotFoundException(ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + userUpdateDto.getRoleName());
+            }
+            authority.setAuthorityName(newRole.getRoleName());
+        }
+
+        authorityRepository.save(authority);
+        userInfoRepository.save(user.getUserInfo());
         User updatedUser = userRepository.save(user);
+
         UserAfterUpdateDto userAfterUpdateDto = userMapper.afterUpdate(updatedUser);
-        userAfterUpdateDto.setUserId(String.valueOf(updatedUser.getId())); // Устанавливаем user_id
+        userAfterUpdateDto.setUserId(String.valueOf(updatedUser.getId()));
         return userAfterUpdateDto;
     }
 }
