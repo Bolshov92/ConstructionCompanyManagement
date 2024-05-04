@@ -4,18 +4,12 @@ import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
-import com.example.construction_company_management.entity.Role;
 import com.example.construction_company_management.entity.User;
-import com.example.construction_company_management.exсeption.ErrorMessage;
-import com.example.construction_company_management.exсeption.UserNotFoundException;
-import com.example.construction_company_management.repository.RoleRepository;
-import com.example.construction_company_management.repository.UserRepository;
 import com.example.construction_company_management.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -37,8 +31,13 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-            public UserAfterUpdateDto updateUser(@PathVariable ("id")UUID id, @RequestBody UserUpdateDto userUpdateDto ) {
+    public UserAfterUpdateDto updateUser(@PathVariable("id") UUID id, @RequestBody UserUpdateDto userUpdateDto) {
         return userService.upDateDto(id, userUpdateDto);
 
+    }
+
+    @GetMapping("/get/{id}")
+    public User findById(@PathVariable("id") UUID id) {
+        return userService.getUserById(id);
     }
 }

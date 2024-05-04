@@ -125,4 +125,13 @@ public class UserServiceImpl implements UserService {
         userAfterUpdateDto.setUserId(String.valueOf(updatedUser.getId()));
         return userAfterUpdateDto;
     }
+
+    @Override
+    public User getUserById(UUID id) {
+        User user = userRepository.findUserById(id);
+        if(user == null){
+            throw new UserNotFoundException(ErrorMessage.USER_IS_NOT_FOUND);
+        }
+        return user;
+    }
 }
