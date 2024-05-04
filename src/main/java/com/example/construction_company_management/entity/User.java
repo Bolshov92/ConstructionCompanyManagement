@@ -40,10 +40,6 @@ public class User {
     @JoinColumn(name = "user_id") // Corrected column name
     private UserInfo userInfo;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role_name")
-    private RoleName roleName = RoleName.DEFAULT_USER;
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;

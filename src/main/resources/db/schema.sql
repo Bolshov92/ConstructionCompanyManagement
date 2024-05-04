@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS user
     last_name         VARCHAR(255),
     date_of_birth     DATE,
     registration_date DATE,
-    role_name         VARCHAR(255),
     user_id           BINARY(16),
     role_id           BINARY(16),
     FOREIGN KEY (user_id) REFERENCES user_info (user_id),

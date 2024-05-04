@@ -8,8 +8,8 @@ VALUES (UUID_TO_BIN('bc878cd0-6ace-44e5-947e-ea9ad03b28eb'), 'ROLE_ADMIN', NULL)
 INSERT INTO user_info (user_name, password, phone_number, user_id)
 VALUES ('admin', 'admin_password', '123456789', UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'));
 
-INSERT INTO user (date_of_birth, first_name, last_name, registration_date, role_name, id, role_id)
-VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', 'USER', UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'), NULL);
+INSERT INTO user (date_of_birth, first_name, last_name, registration_date, id, role_id)
+VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', UUID_TO_BIN('0f9368f4-518f-48cb-b917-2f0f967dd41e'), NULL);
 
 INSERT INTO department (id, dep_name)
 VALUES (UUID_TO_BIN('02614a58-e256-482c-9284-c188c00a7ec6'), 'Builders'),

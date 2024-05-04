@@ -36,17 +36,5 @@ public interface UserMapper {
     UserAfterCreationDto toDto(User user);
 
 
-//    @Mapping(target = "firstName", source = "userUpdateDto.firstName")
-//    @Mapping(target = "lastName", source = "userUpdateDto.lastName")
-//    @Mapping(target = "dateOfBirth", source = "userUpdateDto.dateOfBirth")
-//    @Mapping(target = "registrationDate", source = "userUpdateDto.registrationDate")
-//    @Mapping(target = "userInfo.userName", source = "userUpdateDto.userName")
-//    @Mapping(target = "userInfo.password", source = "userUpdateDto.password")
-//    @Mapping(target = "userInfo.phoneNumber", source = "userUpdateDto.phoneNumber")
-//    @Mapping(target = "id", ignore = true)
-//    @Mapping(target = "role", source = "userUpdateDto.roleName")
-//    UserUpdateDto toUpdate(User updateUser);
-
-
     UserAfterUpdateDto afterUpdate(User afterUpdateUser);
 }

@@ -23,24 +23,11 @@ import java.util.UUID;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
 
 
     @PostMapping("/create")
     public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) {
-        UserAfterCreationDto createdUser = userService.createUser(userCreateDto);
-        UUID userId = UUID.fromString(createdUser.getUserId());
-        Optional<User> userOptional = userRepository.findById(userId);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            Role role = user.getRole();
-            role.setUser(user);
-            roleRepository.save(role);
-        } else {
-            throw new UserNotFoundException(ErrorMessage.USER_IS_NOT_FOUND);
-        }
-        return createdUser;
+        return userService.createUser(userCreateDto);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -49,7 +36,7 @@ public class UserController {
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
 
-    @PutMapping("/update/{id})")
+    @PutMapping("/update/{id}")
             public UserAfterUpdateDto updateUser(@PathVariable ("id")UUID id, @RequestBody UserUpdateDto userUpdateDto ) {
         return userService.upDateDto(id, userUpdateDto);
 

@@ -6,7 +6,9 @@ import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
 import com.example.construction_company_management.entity.*;
 import com.example.construction_company_management.entity.enums.RoleName;
+import com.example.construction_company_management.exсeption.AuthorityIsFoundException;
 import com.example.construction_company_management.exсeption.ErrorMessage;
+import com.example.construction_company_management.exсeption.RoleIsNotFoundException;
 import com.example.construction_company_management.exсeption.UserNotFoundException;
 import com.example.construction_company_management.mapper.UserMapper;
 import com.example.construction_company_management.repository.AuthorityRepository;
@@ -17,6 +19,7 @@ import com.example.construction_company_management.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.RoleNotFoundException;
 import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,7 +36,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
-
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(userCreateDto.getUserName());
         userInfo.setPassword(userCreateDto.getPassword());
@@ -41,9 +43,11 @@ public class UserServiceImpl implements UserService {
 
         UserInfo savedUserInfo = userInfoRepository.save(userInfo);
 
-        RoleName roleName = RoleName.valueOf(userCreateDto.getRoleName());
-        Role role = roleRepository.findByRoleName(roleName.name());
+        RoleName roleName = Optional.ofNullable(userCreateDto.getRoleName())
+                .map(RoleName::valueOf)
+                .orElse(RoleName.DEFAULT_USER);
 
+        Role role = roleRepository.findByRoleName(roleName.name());
         if (role == null) {
             role = new Role();
             role.setRoleName(roleName.name());
@@ -62,10 +66,10 @@ public class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(user);
 
         Authority authority = new Authority();
-
-        authority.setAuthorityName(userCreateDto.getRoleName());
+        authority.setAuthorityName(roleName.name());
         authority.setRole(role);
         authorityRepository.save(authority);
+
         UserAfterCreationDto userAfterCreationDto = userMapper.toDto(savedUser);
         userAfterCreationDto.setUserId(String.valueOf(savedUser.getId()));
 
@@ -92,22 +96,29 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userUpdateDto.getLastName());
         user.setDateOfBirth(userUpdateDto.getDateOfBirth());
 
-        RoleName roleName = RoleName.valueOf(userUpdateDto.getRoleName());
-        Role role = roleRepository.findByRoleName(roleName.name());
-        if (role == null) {
-            role = new Role();
-            role.setRoleName(roleName.name());
-            role = roleRepository.save(role);
-        }
-        user.setRole(role);
+        if (userUpdateDto.getRoleName() != null) {
+            RoleName roleName = RoleName.valueOf(userUpdateDto.getRoleName());
+            Role role = roleRepository.findByRoleName(roleName.name());
+            if (role == null) {
+                throw new RoleIsNotFoundException( ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + roleName);
+            }
+            user.setRole(role);
 
-        Authority authority = new Authority();
-        authority.setAuthorityName(userUpdateDto.getRoleName());
-        authority.setRole(role);
-        authorityRepository.save(authority);
+            Authority authority = authorityRepository.findByAuthorityName(roleName.name());
+            if (authority == null) {
+                throw new AuthorityIsFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with name: " + roleName);
+            }
+        }
+
+        UserInfo userInfo = user.getUserInfo();
+        userInfo.setUserName(userUpdateDto.getUserName());
+        userInfo.setPassword(userUpdateDto.getPassword());
+        userInfo.setPhoneNumber(userUpdateDto.getPhoneNumber());
+        userInfoRepository.save(userInfo);
 
         User updatedUser = userRepository.save(user);
-        return userMapper.afterUpdate(updatedUser);
+        UserAfterUpdateDto userAfterUpdateDto = userMapper.afterUpdate(updatedUser);
+        userAfterUpdateDto.setUserId(String.valueOf(updatedUser.getId())); // Устанавливаем user_id
+        return userAfterUpdateDto;
     }
-    }
-
+}
