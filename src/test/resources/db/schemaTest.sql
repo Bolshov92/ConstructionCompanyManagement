@@ -1,23 +1,16 @@
-CREATE TABLE authority
-(
-    id        BINARY(16) PRIMARY KEY,
-    authority VARCHAR(255)
-);
-
 CREATE TABLE role
 (
     role_id   BINARY(16) PRIMARY KEY,
     role_name VARCHAR(255)
 );
-
 CREATE TABLE user_info
 (
     user_id      BINARY(16) PRIMARY KEY,
     user_name    VARCHAR(255),
     password     VARCHAR(255),
     phone_number VARCHAR(20)
-);
 
+);
 CREATE TABLE user
 (
     id                BINARY(16) PRIMARY KEY,
@@ -26,8 +19,23 @@ CREATE TABLE user
     date_of_birth     DATE,
     registration_date DATE,
     user_id           BINARY(16),
-    FOREIGN KEY (user_id) REFERENCES user_info (user_id)
+    role_id           BINARY(16),
+    FOREIGN KEY (user_id) REFERENCES user_info (user_id),
+    FOREIGN KEY (role_id) REFERENCES role (role_id)
+
 );
+
+CREATE TABLE authority
+(
+    id        BINARY(16) PRIMARY KEY,
+    authority VARCHAR(255),
+    role_id   BINARY(16),
+    user_id   BINARY(16),
+    FOREIGN KEY (role_id) REFERENCES role (role_id),
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+
 
 CREATE TABLE department
 (

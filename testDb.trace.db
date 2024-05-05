@@ -1,0 +1,54 @@
+2024-04-29 22:11:40.920076+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:12:07.024226+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:12:16.960377+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:16:03.575836+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:19:14.496531+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:24:45.237189+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:26:54.927069+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:27:41.038679+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:29:03.780604+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "AUTHORITY" not found (this database is empty); SQL statement:
+INSERT INTO authority (id, authority) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'User1') [42104-224]
+2024-04-29 22:30:35.922950+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROLE" not found (this database is empty); SQL statement:
+INSERT INTO role (role_id, role_name) VALUES (UUID_TO_BIN('d5b6c663-b49b-42b1-a633-ed35ea508cc0'), 'ROLE_ADMIN'), (UUID_TO_BIN('97caae32-94dc-433c-9f6b-4098e305eed8'), 'ROLE_USER') [42104-224]
+2024-04-29 22:32:51.325355+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "CREATE TABLE [*]user ( id BINARY(16) PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), date_of_birth DATE, registration_date DATE, user_id BINARY(16), FOREIGN KEY (user_id) REFERENCES user_info (user_id) )"; ожидалось "identifier"
+Syntax error in SQL statement "CREATE TABLE [*]user ( id BINARY(16) PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), date_of_birth DATE, registration_date DATE, user_id BINARY(16), FOREIGN KEY (user_id) REFERENCES user_info (user_id) )"; expected "identifier"; SQL statement:
+CREATE TABLE user ( id BINARY(16) PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), date_of_birth DATE, registration_date DATE, user_id BINARY(16), FOREIGN KEY (user_id) REFERENCES user_info (user_id) ) [42001-224]
+2024-04-29 22:34:20.053291+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "AUTHORITY" уже существует
+Table "AUTHORITY" already exists; SQL statement:
+CREATE TABLE authority ( id BINARY(16) PRIMARY KEY, authority VARCHAR(255) ) [42101-224]
+2024-04-30 21:29:41.297664+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "AUTHORITY" уже существует
+Table "AUTHORITY" already exists; SQL statement:
+CREATE TABLE authority ( id BINARY(16) PRIMARY KEY, authority VARCHAR(255) ) [42101-224]
+2024-04-30 21:30:07.203666+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "AUTHORITY" уже существует
+Table "AUTHORITY" already exists; SQL statement:
+CREATE TABLE authority ( id BINARY(16) PRIMARY KEY, authority VARCHAR(255) ) [42101-224]
+2024-05-05 11:59:13.461492+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 12:06:17.687824+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
