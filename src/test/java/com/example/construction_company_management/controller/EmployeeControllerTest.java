@@ -1,4 +1,4 @@
-package com.example.construction_company_management;
+package com.example.construction_company_management.controller;
 
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
@@ -21,15 +21,16 @@ import java.time.LocalDate;
 @AutoConfigureMockMvc
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
-
 class EmployeeControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private MockMvc mockMvc;
     LocalDate startDate = LocalDate.parse("2023-01-01");
     LocalDate endDate = LocalDate.parse("2024-10-10");
+
     @Test
     void createEmployeePositiveTest() throws Exception {
         EmployeeCreateDto employeeCreateDto = new EmployeeCreateDto(
@@ -46,16 +47,15 @@ class EmployeeControllerTest {
 
         System.out.println(json);
 
-        MvcResult  result = mockMvc
+        MvcResult result = mockMvc
                 .perform(MockMvcRequestBuilders.post("/employee/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
                 .andReturn();
         String jsonResult = result.getResponse().getContentAsString();
         EmployeeAfterCreationDto afterCreationDto = objectMapper.readValue(jsonResult, EmployeeAfterCreationDto.class);
         System.out.println(jsonResult);
 
-        Assertions.assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertEquals(201, result.getResponse().getStatus());
     }
-
 }

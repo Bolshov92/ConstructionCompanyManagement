@@ -52,3 +52,43 @@ CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
 Table "ROLE" already exists; SQL statement:
 CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 13:05:41.033141+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 13:09:22.288681+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 13:10:26.870615+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 13:16:48.039128+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 13:26:02.023217+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 13:30:49.613093+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 14:15:48.125706+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 14:16:25.723103+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 14:17:17.929303+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
+2024-05-05 14:19:44.870830+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ROLE" уже существует
+Table "ROLE" already exists; SQL statement:
+CREATE TABLE role ( role_id BINARY(16) PRIMARY KEY, role_name VARCHAR(255) ) [42101-224]
