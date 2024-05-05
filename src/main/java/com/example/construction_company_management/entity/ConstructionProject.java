@@ -1,5 +1,6 @@
 package com.example.construction_company_management.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,6 +41,7 @@ public class ConstructionProject {
     @JoinColumn(name = "manager_id")
     private Employee projectManager;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;

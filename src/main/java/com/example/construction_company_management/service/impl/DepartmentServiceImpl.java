@@ -13,6 +13,8 @@ import com.example.construction_company_management.repository.DepartmentReposito
 import com.example.construction_company_management.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -24,6 +26,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentMapper departmentMapper;
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Department findByDepName(String depName) {
         Department department = departmentRepository.findByDepName(depName);
         if (department == null) {
@@ -33,6 +36,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public DepartmentAfterCreationDto createDepartment(DepartmentCreateDto departmentCreateDto) {
         Department department = departmentRepository.findByDepName(departmentCreateDto.getDepName());
         if (department != null) {
@@ -44,6 +48,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteDepartmentById(UUID id) {
         if (!departmentRepository.existsById(id)) {
             throw new DepartmentNotFoundException(ErrorMessage.DEPARTMENT_IS_NOT_FOUND);
@@ -52,6 +57,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public DepartmentAfterUpdateDto updateDepartment(UUID id, DepartmentUpdateDto departmentUpdateDto) {
         Optional<Department> optionalDepartment = departmentRepository.findById(id);
         if (optionalDepartment.isEmpty()) {

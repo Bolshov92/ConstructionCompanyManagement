@@ -21,6 +21,8 @@ import com.example.construction_company_management.repository.UserRepository;
 import com.example.construction_company_management.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.Optional;
@@ -37,6 +39,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(userCreateDto.getUserName());
@@ -81,6 +84,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteUserById(UUID id) {
         if (!userRepository.existsById(id)) {
             throw new UserNotFoundException(ErrorMessage.USER_IS_NOT_FOUND);
@@ -89,6 +93,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public UserAfterUpdateDto upDateDto(UUID id, UserUpdateDto userUpdateDto) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isEmpty()) {
@@ -127,6 +132,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public User getUserById(UUID id) {
         User user = userRepository.findUserById(id);
         if(user == null){

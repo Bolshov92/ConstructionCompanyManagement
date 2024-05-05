@@ -13,6 +13,8 @@ import com.example.construction_company_management.repository.EmployeeRepository
 import com.example.construction_company_management.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -26,6 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DepartmentRepository departmentRepository;
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public Employee getEmployeeById(UUID id) {
         Employee employee = employeeRepository.getEmployeeById(id);
         if (employee == null) {
@@ -35,6 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteEmployeeById(UUID id) {
         if (!employeeRepository.existsById(id)) {
             throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND);
@@ -44,6 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public EmployeeAfterUpdateDto updateEmployee(UUID id, EmployeeUpdateDto employeeUpdateDto) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
         if (optionalEmployee.isEmpty()) {
@@ -57,6 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeCreationDto) {
         Employee employee = employeeRepository.findByLastName(employeeCreationDto.getLastName());
         if (employee != null) {

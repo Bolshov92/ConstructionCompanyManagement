@@ -1,6 +1,7 @@
 package com.example.construction_company_management.entity;
 
 import com.example.construction_company_management.entity.enums.RoleName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class User {
     @Column(name = "registrationDate")
     private Date registrationDate;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private UserInfo userInfo;
@@ -45,6 +47,7 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Authority> authorities;
 

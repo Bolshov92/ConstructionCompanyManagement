@@ -1,5 +1,6 @@
 package com.example.construction_company_management.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class UserInfo {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "userInfo")
     private User user;
 
