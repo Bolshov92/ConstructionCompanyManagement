@@ -1,8 +1,10 @@
+DROP TABLE IF EXISTS role CASCADE ;
 CREATE TABLE role
 (
     role_id   BINARY(16) PRIMARY KEY,
     role_name VARCHAR(255)
 );
+DROP TABLE IF EXISTS user_info CASCADE ;
 CREATE TABLE user_info
 (
     user_id      BINARY(16) PRIMARY KEY,
@@ -11,7 +13,9 @@ CREATE TABLE user_info
     phone_number VARCHAR(20)
 
 );
-CREATE TABLE user
+
+DROP TABLE IF EXISTS "user" CASCADE ;
+CREATE TABLE "user"
 (
     id                BINARY(16) PRIMARY KEY,
     first_name        VARCHAR(255),
@@ -22,9 +26,9 @@ CREATE TABLE user
     role_id           BINARY(16),
     FOREIGN KEY (user_id) REFERENCES user_info (user_id),
     FOREIGN KEY (role_id) REFERENCES role (role_id)
-
 );
 
+DROP TABLE IF EXISTS authority CASCADE ;
 CREATE TABLE authority
 (
     id        BINARY(16) PRIMARY KEY,
@@ -32,17 +36,17 @@ CREATE TABLE authority
     role_id   BINARY(16),
     user_id   BINARY(16),
     FOREIGN KEY (role_id) REFERENCES role (role_id),
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    FOREIGN KEY (user_id) REFERENCES "user" (id)
 );
 
-
-
+DROP TABLE IF EXISTS department CASCADE ;
 CREATE TABLE department
 (
     id       BINARY(16) PRIMARY KEY,
     dep_name VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS company CASCADE ;
 CREATE TABLE company
 (
     id   BINARY(16) PRIMARY KEY,
@@ -52,6 +56,7 @@ CREATE TABLE company
     profit DOUBLE
 );
 
+DROP TABLE IF EXISTS employee CASCADE ;
 CREATE TABLE employee
 (
     id            BINARY(16) PRIMARY KEY,
@@ -67,6 +72,7 @@ CREATE TABLE employee
     FOREIGN KEY (supervision) REFERENCES employee (id)
 );
 
+DROP TABLE IF EXISTS construction_project CASCADE ;
 CREATE TABLE construction_project
 (
     id           BINARY(16) PRIMARY KEY,
@@ -81,12 +87,14 @@ CREATE TABLE construction_project
     FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
+DROP TABLE IF EXISTS tool CASCADE ;
 CREATE TABLE tool
 (
     id            BINARY(16) PRIMARY KEY,
     serial_number INT
 );
 
+DROP TABLE IF EXISTS material CASCADE ;
 CREATE TABLE material
 (
     id                BINARY(16) PRIMARY KEY,

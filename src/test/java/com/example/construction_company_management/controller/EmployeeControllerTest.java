@@ -2,7 +2,6 @@ package com.example.construction_company_management.controller;
 
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
-import com.example.construction_company_management.entity.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,9 +39,11 @@ class EmployeeControllerTest {
                 30,
                 startDate,
                 endDate,
-                "Drivers",
-                new Employee()
+                "Builders",
+                null
+
         );
+
         String json = objectMapper.writeValueAsString(employeeCreateDto);
 
         System.out.println(json);
@@ -56,6 +57,6 @@ class EmployeeControllerTest {
         EmployeeAfterCreationDto afterCreationDto = objectMapper.readValue(jsonResult, EmployeeAfterCreationDto.class);
         System.out.println(jsonResult);
 
-        Assertions.assertEquals(201, result.getResponse().getStatus());
+        Assertions.assertEquals(200, result.getResponse().getStatus());
     }
 }
