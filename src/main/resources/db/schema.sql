@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS employee
     hire_date     DATE,
     end_date      DATE,
     department_id BINARY(16),
-    supervision   BINARY(16),
+    role_id       BINARY(16),
     FOREIGN KEY (department_id) REFERENCES department (id),
-    FOREIGN KEY (supervision) REFERENCES employee (id)
+    FOREIGN KEY (role_id) REFERENCES role (role_id)
 );
 
 CREATE TABLE IF NOT EXISTS construction_project

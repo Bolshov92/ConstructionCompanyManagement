@@ -6,10 +6,13 @@ import com.example.construction_company_management.dto.EmployeeCreateDto;
 import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
+import com.example.construction_company_management.entity.Role;
+import com.example.construction_company_management.entity.enums.RoleName;
 import com.example.construction_company_management.exсeption.*;
 import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.repository.DepartmentRepository;
 import com.example.construction_company_management.repository.EmployeeRepository;
+import com.example.construction_company_management.repository.RoleRepository;
 import com.example.construction_company_management.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
     private final DepartmentRepository departmentRepository;
+    private final RoleRepository roleRepository;
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -64,10 +68,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeCreationDto) {
-        Employee employee = employeeRepository.findByLastName(employeeCreationDto.getLastName());
-        if (employee != null) {
-            throw new EmployeeAlreadyExists(ErrorMessage.EMPLOYEE_ALREADY_EXISTS);
+
+
+        Role role = roleRepository.findByRoleName(employeeCreationDto.getRoleName());
+        if (role == null) {
+            role = new Role();
+            role.setRoleName(role.getRoleName());
+            role = roleRepository.save(role);
         }
+
         String depName = employeeCreationDto.getDepName();
         Department department = departmentRepository.findByDepName(depName);
         if (department == null) {
@@ -75,7 +84,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         Employee entity = employeeMapper.toEntity(employeeCreationDto);
+
+
         entity.setDepartment(department);
+
         Employee employeeAfterCreation = employeeRepository.save(entity);
         return employeeMapper.toDto(employeeAfterCreation);
     }
