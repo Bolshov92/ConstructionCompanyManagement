@@ -43,19 +43,33 @@ public class Employee {
     @JoinColumn(name = "department_id")
     private Department department;
 
-    @ManyToOne
-    @JoinColumn(name = "supervision")
-    private Employee superWiser;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee employee)) return false;
-        return getAge() == employee.getAge() && Objects.equals(getId(), employee.getId()) && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getContactInfo(), employee.getContactInfo()) && Objects.equals(getHireDate(), employee.getHireDate()) && Objects.equals(getEndDate(), employee.getEndDate()) && Objects.equals(getDepartment(), employee.getDepartment()) && Objects.equals(getSuperWiser(), employee.getSuperWiser());
+        return getAge() == employee.getAge() && Objects.equals(getId(), employee.getId()) && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getContactInfo(), employee.getContactInfo()) && Objects.equals(getHireDate(), employee.getHireDate()) && Objects.equals(getEndDate(), employee.getEndDate()) && Objects.equals(getDepartment(), employee.getDepartment());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getContactInfo(), getAge(), getHireDate(), getEndDate(), getDepartment(), getSuperWiser());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getContactInfo(), getAge(), getHireDate(), getEndDate(), getDepartment());
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", contactInfo='" + contactInfo + '\'' +
+                ", age=" + age +
+                ", hireDate=" + hireDate +
+                ", endDate=" + endDate +
+                ", department=" + department +
+                '}';
     }
 }

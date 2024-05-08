@@ -1,5 +1,6 @@
 package com.example.construction_company_management.service;
 
+import com.example.construction_company_management.dto.*;
 import com.example.construction_company_management.entity.Employee;
 
 import java.util.UUID;
@@ -9,7 +10,7 @@ public interface EmployeeService {
 
     void deleteEmployeeById(UUID id);
 
-    void updateEmployee(UUID id, Employee employeeDetails);
+    EmployeeAfterUpdateDto updateEmployee(UUID id, EmployeeUpdateDto employeeUpdateDto);
 
-    void createEmployee(Employee employee);
+    EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeAfterCreationDto);
 }

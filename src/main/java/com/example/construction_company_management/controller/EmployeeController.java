@@ -1,5 +1,9 @@
 package com.example.construction_company_management.controller;
 
+import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
+import com.example.construction_company_management.dto.EmployeeAfterUpdateDto;
+import com.example.construction_company_management.dto.EmployeeCreateDto;
+import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -28,15 +32,13 @@ public class EmployeeController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateEmployee(@PathVariable("id") UUID id, @RequestBody Employee employeeDetails) {
-        employeeService.updateEmployee(id, employeeDetails);
-        return ResponseEntity.ok("Employee with id : " + id + "was updated");
+    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") UUID id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
+        return employeeService.updateEmployee(id, employeeUpdateDto);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
-        employeeService.createEmployee(employee);
-        return ResponseEntity.ok("Employee created successfully");
+    public EmployeeAfterCreationDto createEmployee(@RequestBody EmployeeCreateDto employeeCreateDto) {
+        return employeeService.createEmployee(employeeCreateDto);
     }
 
 }

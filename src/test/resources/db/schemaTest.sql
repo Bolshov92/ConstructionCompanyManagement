@@ -1,22 +1,11 @@
-DROP TABLE IF EXISTS tool;
-DROP TABLE IF EXISTS material;
-DROP TABLE IF EXISTS construction_project;
-DROP TABLE IF EXISTS employee;
-DROP TABLE IF EXISTS authority;
-DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS user_info;
-DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS company;
-DROP TABLE IF EXISTS department;
-
-
-
+DROP TABLE IF EXISTS role CASCADE;
 CREATE TABLE IF NOT EXISTS role
 (
     role_id   BINARY(16) PRIMARY KEY,
     role_name VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS user_info CASCADE;
 CREATE TABLE IF NOT EXISTS user_info
 (
     user_id      BINARY(16) PRIMARY KEY,
@@ -25,7 +14,9 @@ CREATE TABLE IF NOT EXISTS user_info
     phone_number VARCHAR(20)
 
 );
-CREATE TABLE IF NOT EXISTS user
+
+DROP TABLE IF EXISTS "user" CASCADE;
+CREATE TABLE IF NOT EXISTS "user"
 (
     id                BINARY(16) PRIMARY KEY,
     first_name        VARCHAR(255),
@@ -39,6 +30,7 @@ CREATE TABLE IF NOT EXISTS user
 
 );
 
+DROP TABLE IF EXISTS authority CASCADE;
 CREATE TABLE IF NOT EXISTS authority
 (
     id        BINARY(16) PRIMARY KEY,
@@ -46,17 +38,17 @@ CREATE TABLE IF NOT EXISTS authority
     role_id   BINARY(16),
     user_id   BINARY(16),
     FOREIGN KEY (role_id) REFERENCES role (role_id),
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    FOREIGN KEY (user_id) REFERENCES "user" (id)
 );
 
-
-
+DROP TABLE IF EXISTS department CASCADE;
 CREATE TABLE IF NOT EXISTS department
 (
     id       BINARY(16) PRIMARY KEY,
     dep_name VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS company CASCADE;
 CREATE TABLE IF NOT EXISTS company
 (
     id       BINARY(16) PRIMARY KEY,
@@ -66,6 +58,7 @@ CREATE TABLE IF NOT EXISTS company
     profit   DOUBLE
 );
 
+DROP TABLE IF EXISTS employee CASCADE;
 CREATE TABLE IF NOT EXISTS employee
 (
     id            BINARY(16) PRIMARY KEY,
@@ -81,6 +74,7 @@ CREATE TABLE IF NOT EXISTS employee
     FOREIGN KEY (role_id) REFERENCES role (role_id)
 );
 
+DROP TABLE IF EXISTS construction_project CASCADE;
 CREATE TABLE IF NOT EXISTS construction_project
 (
     id           BINARY(16) PRIMARY KEY,
@@ -95,12 +89,14 @@ CREATE TABLE IF NOT EXISTS construction_project
     FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
+DROP TABLE IF EXISTS tool CASCADE;
 CREATE TABLE IF NOT EXISTS tool
 (
     id            BINARY(16) PRIMARY KEY,
     serial_number INT
 );
 
+DROP TABLE IF EXISTS material CASCADE;
 CREATE TABLE IF NOT EXISTS material
 (
     id                BINARY(16) PRIMARY KEY,

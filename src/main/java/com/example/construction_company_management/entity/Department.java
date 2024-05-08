@@ -20,26 +20,26 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column
-    private String projects;
+    @Column(name = "dep_name")
+    private String depName;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Department that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getProjects(), that.getProjects());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getDepName(), that.getDepName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getProjects());
+        return Objects.hash(getId(), getDepName());
     }
 
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", projects='" + projects + '\'' +
+                ", depName='" + depName + '\'' +
                 '}';
     }
 }

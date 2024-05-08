@@ -1,11 +1,12 @@
 package com.example.construction_company_management.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -16,7 +17,8 @@ import java.util.UUID;
 public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid_generator")
+    @GenericGenerator(name = "uuid_generator", strategy = "com.example.construction_company_management.uuidGenerator.UuidTimeSequenceGenerator")
     @Column(name = "user_id")
     private UUID userId;
 
@@ -28,13 +30,9 @@ public class UserInfo {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "userInfo")
     private User user;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+
 }
