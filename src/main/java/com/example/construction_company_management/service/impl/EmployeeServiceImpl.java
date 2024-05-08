@@ -7,8 +7,10 @@ import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.entity.Role;
-import com.example.construction_company_management.entity.enums.RoleName;
-import com.example.construction_company_management.exсeption.*;
+import com.example.construction_company_management.exсeption.DepartmentNotFoundException;
+import com.example.construction_company_management.exсeption.EmployeeIsNotFound;
+import com.example.construction_company_management.exсeption.EmployeeNotExistExсeption;
+import com.example.construction_company_management.exсeption.ErrorMessage;
 import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.repository.DepartmentRepository;
 import com.example.construction_company_management.repository.EmployeeRepository;
@@ -69,11 +71,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeCreationDto) {
 
-
         Role role = roleRepository.findByRoleName(employeeCreationDto.getRoleName());
         if (role == null) {
             role = new Role();
-            role.setRoleName(role.getRoleName());
+            role.setRoleName(employeeCreationDto.getRoleName());
             role = roleRepository.save(role);
         }
 
@@ -87,6 +88,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
         entity.setDepartment(department);
+        entity.setRole(role);
 
         Employee employeeAfterCreation = employeeRepository.save(entity);
         return employeeMapper.toDto(employeeAfterCreation);

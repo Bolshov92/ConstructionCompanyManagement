@@ -1,11 +1,12 @@
-DROP TABLE IF EXISTS role CASCADE ;
-CREATE TABLE role
+DROP TABLE IF EXISTS role CASCADE;
+CREATE TABLE IF NOT EXISTS role
 (
     role_id   BINARY(16) PRIMARY KEY,
     role_name VARCHAR(255)
 );
-DROP TABLE IF EXISTS user_info CASCADE ;
-CREATE TABLE user_info
+
+DROP TABLE IF EXISTS user_info CASCADE;
+CREATE TABLE IF NOT EXISTS user_info
 (
     user_id      BINARY(16) PRIMARY KEY,
     user_name    VARCHAR(255),
@@ -14,8 +15,8 @@ CREATE TABLE user_info
 
 );
 
-DROP TABLE IF EXISTS "user" CASCADE ;
-CREATE TABLE "user"
+DROP TABLE IF EXISTS "user" CASCADE;
+CREATE TABLE IF NOT EXISTS "user"
 (
     id                BINARY(16) PRIMARY KEY,
     first_name        VARCHAR(255),
@@ -26,10 +27,11 @@ CREATE TABLE "user"
     role_id           BINARY(16),
     FOREIGN KEY (user_id) REFERENCES user_info (user_id),
     FOREIGN KEY (role_id) REFERENCES role (role_id)
+
 );
 
-DROP TABLE IF EXISTS authority CASCADE ;
-CREATE TABLE authority
+DROP TABLE IF EXISTS authority CASCADE;
+CREATE TABLE IF NOT EXISTS authority
 (
     id        BINARY(16) PRIMARY KEY,
     authority VARCHAR(255),
@@ -39,25 +41,25 @@ CREATE TABLE authority
     FOREIGN KEY (user_id) REFERENCES "user" (id)
 );
 
-DROP TABLE IF EXISTS department CASCADE ;
-CREATE TABLE department
+DROP TABLE IF EXISTS department CASCADE;
+CREATE TABLE IF NOT EXISTS department
 (
     id       BINARY(16) PRIMARY KEY,
     dep_name VARCHAR(255)
 );
 
-DROP TABLE IF EXISTS company CASCADE ;
-CREATE TABLE company
+DROP TABLE IF EXISTS company CASCADE;
+CREATE TABLE IF NOT EXISTS company
 (
-    id   BINARY(16) PRIMARY KEY,
-    name VARCHAR(255),
+    id       BINARY(16) PRIMARY KEY,
+    name     VARCHAR(255),
     turnover DOUBLE,
     expenses DOUBLE,
-    profit DOUBLE
+    profit   DOUBLE
 );
 
-DROP TABLE IF EXISTS employee CASCADE ;
-CREATE TABLE employee
+DROP TABLE IF EXISTS employee CASCADE;
+CREATE TABLE IF NOT EXISTS employee
 (
     id            BINARY(16) PRIMARY KEY,
     first_name    VARCHAR(255),
@@ -67,13 +69,13 @@ CREATE TABLE employee
     hire_date     DATE,
     end_date      DATE,
     department_id BINARY(16),
-    supervision   BINARY(16),
+    role_id       BINARY(16),
     FOREIGN KEY (department_id) REFERENCES department (id),
-    FOREIGN KEY (supervision) REFERENCES employee (id)
+    FOREIGN KEY (role_id) REFERENCES role (role_id)
 );
 
-DROP TABLE IF EXISTS construction_project CASCADE ;
-CREATE TABLE construction_project
+DROP TABLE IF EXISTS construction_project CASCADE;
+CREATE TABLE IF NOT EXISTS construction_project
 (
     id           BINARY(16) PRIMARY KEY,
     project_name VARCHAR(255),
@@ -87,15 +89,15 @@ CREATE TABLE construction_project
     FOREIGN KEY (company_id) REFERENCES company (id)
 );
 
-DROP TABLE IF EXISTS tool CASCADE ;
-CREATE TABLE tool
+DROP TABLE IF EXISTS tool CASCADE;
+CREATE TABLE IF NOT EXISTS tool
 (
     id            BINARY(16) PRIMARY KEY,
     serial_number INT
 );
 
-DROP TABLE IF EXISTS material CASCADE ;
-CREATE TABLE material
+DROP TABLE IF EXISTS material CASCADE;
+CREATE TABLE IF NOT EXISTS material
 (
     id                BINARY(16) PRIMARY KEY,
     name              VARCHAR(255),
