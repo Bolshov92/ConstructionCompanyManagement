@@ -2,6 +2,7 @@ package com.example.construction_company_management.controller;
 
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
+import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Role;
 import com.example.construction_company_management.repository.RoleRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,5 +65,28 @@ class EmployeeControllerTest {
         System.out.println(jsonResult);
 
         Assertions.assertEquals(200, result.getResponse().getStatus());
+    }
+
+    @Test
+    void updateEmployeePositiveTest() throws Exception {
+        EmployeeUpdateDto employeeUpdateDto = new EmployeeUpdateDto(
+                "NewName",
+                "NewLastName",
+                "newMail",
+                20,
+                startDate,
+                endDate,
+                "Drivers",
+                "ROLE_SUPERVISOR"
+        );
+        String json = objectMapper.writeValueAsString(employeeUpdateDto);
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.put("/employee/update/{id}", "639d7bc4-9845-40aa-84c8-b0f1dced6732")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)).andReturn();
+        Assertions.assertEquals(200, result.getResponse().getStatus());
+
+        String jsonResult = result.getResponse().getContentAsString();
+        EmployeeAfterCreationDto updatedEmployeeDto = objectMapper.readValue(jsonResult, EmployeeAfterCreationDto.class);
+
     }
 }

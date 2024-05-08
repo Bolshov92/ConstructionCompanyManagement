@@ -60,10 +60,27 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (optionalEmployee.isEmpty()) {
             throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND);
         }
+
         Employee employee = optionalEmployee.get();
+
+
         employeeMapper.toUpdate(employeeUpdateDto, employee);
-        Employee updateEmployee = employeeRepository.save(employee);
-        return employeeMapper.afterUpdateDto(updateEmployee);
+
+        String newRoleName = employeeUpdateDto.getRoleName();
+
+        if (newRoleName != null && !newRoleName.equals(employee.getRole().getRoleName())) {
+            Role role = roleRepository.findByRoleName(newRoleName);
+            if (role == null) {
+                role = new Role();
+                role.setRoleName(newRoleName);
+                role = roleRepository.save(role);
+            }
+            employee.setRole(role);
+        }
+
+        Employee updatedEmployee = employeeRepository.save(employee);
+
+        return employeeMapper.afterUpdateDto(updatedEmployee);
     }
 
 

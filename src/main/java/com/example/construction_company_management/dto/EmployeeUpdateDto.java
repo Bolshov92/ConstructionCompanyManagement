@@ -1,7 +1,5 @@
 package com.example.construction_company_management.dto;
 
-import com.example.construction_company_management.entity.Employee;
-import com.example.construction_company_management.entity.Role;
 import lombok.Value;
 
 import java.time.LocalDate;
@@ -12,6 +10,8 @@ public class EmployeeUpdateDto {
     String lastName;
     String contactInfo;
     int age;
+    LocalDate hireDate;
     LocalDate endDate;
-    Role role_id;
+    String depName;
+    String roleName;
 }
