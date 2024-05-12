@@ -1,5 +1,3 @@
-INSERT INTO authority (id, authority, role_id, user_id)
-VALUES (CAST('42cd0d41-8705-44fc-a7d5-fa8a0beb0540' AS UUID), 'User1', NULL, null);
 
 INSERT INTO role (role_id, role_name)
 VALUES (CAST('bc878cd0-6ace-44e5-947e-ea9ad03b28eb' AS UUID), 'ROLE_ADMIN'),
@@ -10,11 +8,13 @@ VALUES (CAST('bc878cd0-6ace-44e5-947e-ea9ad03b28eb' AS UUID), 'ROLE_ADMIN'),
        (CAST('c53bdcdb-1681-4785-8be1-8b1e769f3b39' AS UUID), 'ROLE_DIRECTOR'),
        (CAST('c58694d3-473f-4155-a1e1-81fa8f534fe7' AS UUID), 'ROLE_EMPLOYEE');
 
-INSERT INTO user_info (user_name, password, phone_number, user_id)
-VALUES ('admin', 'admin_password', '123456789', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e' AS UUID));
 
-INSERT INTO "user" (date_of_birth, first_name, last_name, registration_date, id, role_id)
-VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e' AS UUID), NULL);
+
+INSERT INTO user_info (id, user_name, password, phone_number, user_id)
+VALUES (CAST('f2165341-4c7f-4c20-af08-7d0962ac4777' AS UUID),'admin', 'admin_password', '123456789', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e' AS UUID));
+
+INSERT INTO users (date_of_birth, first_name, last_name, registration_date, id, user_info_id, role_id)
+VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e'AS UUID),CAST('f2165341-4c7f-4c20-af08-7d0962ac4777'AS UUID), CAST('10240b78-88c6-4a80-87e1-ac3cbf6335a2' AS UUID));
 
 INSERT INTO department (id, dep_name)
 VALUES (CAST('02614a58-e256-482c-9284-c188c00a7ec6' AS UUID), 'Builders'),
@@ -36,3 +36,6 @@ VALUES (CAST('f2fba9a3-dbc9-4c35-8c06-9b3cc4f5b244' AS UUID), 'Project X', '123 
 INSERT INTO tool (id, serial_number)
 VALUES (CAST('8bdf32e0-0847-4bd8-8cd1-235602db6e7f' AS UUID), 123456),
        (CAST('26584493-f042-419b-8220-dea4bd8b3ff2' AS UUID), 789012);
+
+INSERT INTO authority (id, authority, role_id, user_id)
+VALUES (CAST('42cd0d41-8705-44fc-a7d5-fa8a0beb0540' AS UUID), 'ROLE_SUPERVISOR', CAST('aee6c246-d9a5-4aff-9120-1e0e3615e127' AS UUID), CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e' AS UUID));

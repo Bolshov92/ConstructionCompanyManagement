@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -22,6 +23,9 @@ public class Department {
 
     @Column(name = "dep_name")
     private String depName;
+
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private Set<Employee> employees;
 
     @Override
     public boolean equals(Object o) {

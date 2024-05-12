@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EmployeeMapper {
-
     default UUID mapRoleToRoleId(Role role){
         return role.getRoleId();
     }
@@ -29,7 +28,7 @@ public interface EmployeeMapper {
     Employee toEntity(EmployeeCreateDto employeeCreationDto);
 
     @Mapping(target = "employeeId", source = "id")
-    EmployeeAfterCreationDto toDto(Employee employeeAfterCreation);
+    EmployeeAfterCreationDto toDto(Employee employee);
 
     @Mapping(target = "firstName", source = "employeeUpdateDto.firstName")
     @Mapping(target = "lastName", source = "employeeUpdateDto.lastName")

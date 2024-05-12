@@ -2,10 +2,14 @@ package com.example.construction_company_management.service;
 
 import com.example.construction_company_management.dto.*;
 import com.example.construction_company_management.entity.Employee;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public interface EmployeeService {
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     Employee getEmployeeById(UUID id);
 
     void deleteEmployeeById(UUID id);

@@ -17,7 +17,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -40,7 +40,7 @@ public class User {
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

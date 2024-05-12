@@ -7,10 +7,8 @@ import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.entity.Role;
-import com.example.construction_company_management.exсeption.DepartmentNotFoundException;
-import com.example.construction_company_management.exсeption.EmployeeIsNotFound;
-import com.example.construction_company_management.exсeption.EmployeeNotExistExсeption;
-import com.example.construction_company_management.exсeption.ErrorMessage;
+import com.example.construction_company_management.entity.User;
+import com.example.construction_company_management.exсeption.*;
 import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.repository.DepartmentRepository;
 import com.example.construction_company_management.repository.EmployeeRepository;
@@ -33,14 +31,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DepartmentRepository departmentRepository;
     private final RoleRepository roleRepository;
 
+
+
+
+
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public Employee getEmployeeById(UUID id) {
-        Employee employee = employeeRepository.getEmployeeById(id);
-        if (employee == null) {
-            throw new EmployeeNotExistExсeption(ErrorMessage.EMPLOYEE_NOT_EXIST);
-        }
-        return employee;
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+        return optionalEmployee.orElseThrow(() -> new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND));
     }
 
     @Override

@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
         RoleName roleName = Optional.ofNullable(userCreateDto.getRoleName())
                 .map(RoleName::valueOf)
-                .orElse(RoleName.DEFAULT_USER);
+                .orElse(RoleName.ROLE_DEFAULT_USER);
 
         Role role = roleRepository.findByRoleName(roleName.name());
         if (role == null) {

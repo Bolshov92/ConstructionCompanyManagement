@@ -5,6 +5,7 @@ import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
 import com.example.construction_company_management.entity.User;
+import com.example.construction_company_management.mapper.UserMapper;
 import com.example.construction_company_management.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
+    private final UserMapper userMapper;
 
 
     @PostMapping("/create")
@@ -25,7 +27,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> userById(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> deleteUserById(@PathVariable("id") UUID id) {
         userService.deleteUserById(id);
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
@@ -37,7 +39,8 @@ public class UserController {
     }
 
     @GetMapping("/get/{id}")
-    public User findById(@PathVariable("id") UUID id) {
-        return userService.getUserById(id);
+    public UserAfterCreationDto findById(@PathVariable("id") UUID id) {
+        User user = userService.getUserById(id);
+        return userMapper.toDto(user);
     }
 }

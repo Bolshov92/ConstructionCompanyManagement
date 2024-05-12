@@ -19,22 +19,23 @@ CREATE TABLE IF NOT EXISTS role
 
 CREATE TABLE IF NOT EXISTS user_info
 (
-    user_id      BINARY(16) PRIMARY KEY,
+    id      BINARY(16) PRIMARY KEY,
     user_name    VARCHAR(255),
     password     VARCHAR(255),
-    phone_number VARCHAR(20)
+    phone_number VARCHAR(20),
+    user_id BINARY(16)
 
 );
-CREATE TABLE IF NOT EXISTS user
+CREATE TABLE IF NOT EXISTS users
 (
     id                BINARY(16) PRIMARY KEY,
     first_name        VARCHAR(255),
     last_name         VARCHAR(255),
     date_of_birth     DATE,
     registration_date DATE,
-    user_id           BINARY(16),
+    user_info_id      BINARY(16),
     role_id           BINARY(16),
-    FOREIGN KEY (user_id) REFERENCES user_info (user_id),
+    FOREIGN KEY (user_info_id) REFERENCES user_info (id),
     FOREIGN KEY (role_id) REFERENCES role (role_id)
 
 );
@@ -46,7 +47,7 @@ CREATE TABLE IF NOT EXISTS authority
     role_id   BINARY(16),
     user_id   BINARY(16),
     FOREIGN KEY (role_id) REFERENCES role (role_id),
-    FOREIGN KEY (user_id) REFERENCES user (id)
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS employee
     first_name    VARCHAR(255),
     last_name     VARCHAR(255),
     contact_info  VARCHAR(255),
-    age           INT,
+    age           int,
     hire_date     DATE,
     end_date      DATE,
     department_id BINARY(16),
