@@ -6,18 +6,25 @@ import com.example.construction_company_management.dto.DepartmentCreateDto;
 import com.example.construction_company_management.dto.DepartmentUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.service.DepartmentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@Tag(name = "test")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/department")
 public class DepartmentController {
     private final DepartmentService departmentService;
 
+    @Operation(
+            summary = "Get employee bi Id",
+            description = "What Did?"
+    )
     @GetMapping("/get/{name}")
     public Department findByDepName(@PathVariable("name") String depName) {
         return departmentService.findByDepName(depName);
