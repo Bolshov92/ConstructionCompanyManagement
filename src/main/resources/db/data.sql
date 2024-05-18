@@ -18,7 +18,8 @@ VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', UUID_TO_BIN('0f9368f4-518f-48
 
 INSERT INTO department (id, dep_name)
 VALUES (UUID_TO_BIN('02614a58-e256-482c-9284-c188c00a7ec6'), 'Builders'),
-       (UUID_TO_BIN('cb5d6730-c117-473b-9ded-d4cf57a53d75'), 'Drivers');
+       (UUID_TO_BIN('cb5d6730-c117-473b-9ded-d4cf57a53d75'), 'Drivers'),
+       (UUID_TO_BIN('502bbcc6-f5db-4e98-ae95-ce417b226223'), 'IT');
 
 INSERT INTO company (id, name, turnover, expenses, profit)
 VALUES (UUID_TO_BIN('21fbc398-0515-419e-8c57-3e3f21e554c4'), 'ABC Construction', 1000000.00, 800000.00, 200000.00);

@@ -7,7 +7,6 @@ import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.entity.Role;
-import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.exсeption.*;
 import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.repository.DepartmentRepository;
@@ -48,11 +47,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public void deleteEmployeeById(UUID id) {
+    public String deleteEmployeeById(UUID id) {
         if (!employeeRepository.existsById(id)) {
             throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND);
         }
         employeeRepository.deleteById(id);
+        return null;
     }
 
 
