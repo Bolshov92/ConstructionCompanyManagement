@@ -14,17 +14,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Tag(name = "test")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/department")
 public class DepartmentController {
     private final DepartmentService departmentService;
 
-    @Operation(
-            summary = "Get employee bi Id",
-            description = "What Did?"
-    )
     @GetMapping("/get/{name}")
     public Department findByDepName(@PathVariable("name") String depName) {
         return departmentService.findByDepName(depName);

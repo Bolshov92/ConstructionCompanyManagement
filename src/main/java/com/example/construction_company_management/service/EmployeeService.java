@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface EmployeeService {
-    @Transactional(isolation = Isolation.READ_COMMITTED)
     Employee getEmployeeById(UUID id);
 
     void deleteEmployeeById(UUID id);

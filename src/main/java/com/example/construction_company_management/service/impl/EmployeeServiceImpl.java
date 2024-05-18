@@ -38,8 +38,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public Employee getEmployeeById(UUID id) {
-        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
-        return optionalEmployee.orElseThrow(() -> new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND));
+        Employee employee = employeeRepository.getEmployeeById(id);
+        if (employee == null) {
+            throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_NOT_EXIST);
+
+        }
+        return employee;
     }
 
     @Override

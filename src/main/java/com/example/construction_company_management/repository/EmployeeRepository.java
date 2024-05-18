@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
 
-    Optional<Employee> findById(UUID id);
-
     Employee findByLastName(String lastName);
+
+    Employee getEmployeeById(UUID id);
 }
