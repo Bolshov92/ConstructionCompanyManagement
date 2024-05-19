@@ -1,6 +1,5 @@
 package com.example.construction_company_management.annotation;
 
-import com.example.construction_company_management.entity.Employee;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -12,7 +11,6 @@ import org.springframework.core.annotation.AliasFor;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

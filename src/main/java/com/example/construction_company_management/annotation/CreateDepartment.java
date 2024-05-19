@@ -1,7 +1,6 @@
 package com.example.construction_company_management.annotation;
 
 import com.example.construction_company_management.entity.Department;
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
