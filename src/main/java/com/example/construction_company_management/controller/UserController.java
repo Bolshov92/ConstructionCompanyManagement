@@ -1,5 +1,6 @@
 package com.example.construction_company_management.controller;
 
+import com.example.construction_company_management.annotation.*;
 import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
@@ -21,26 +22,25 @@ public class UserController {
     private final UserMapper userMapper;
 
 
-    @PostMapping("/create")
+    @CreateUser(path = "/create")
     public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) {
         return userService.createUser(userCreateDto);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteUser(path = "/delete/{id}")
     public ResponseEntity<String> deleteUserById(@PathVariable("id") UUID id) {
         userService.deleteUserById(id);
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
 
-    @PutMapping("/update/{id}")
+    @UpdateUser(path = "/update/{id}")
     public UserAfterUpdateDto updateUser(@PathVariable("id") UUID id, @RequestBody UserUpdateDto userUpdateDto) {
         return userService.upDateDto(id, userUpdateDto);
 
     }
 
-    @GetMapping("/get/{id}")
-    public UserAfterCreationDto findById(@PathVariable("id") UUID id) {
-        User user = userService.getUserById(id);
-        return userMapper.toDto(user);
+    @GetUserById(path = "/get/{id}")
+    public User findById(@PathVariable("id") UUID id) {
+        return userService.getUserById(id);
     }
 }

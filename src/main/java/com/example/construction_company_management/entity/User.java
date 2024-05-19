@@ -43,6 +43,7 @@ public class User {
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;

@@ -1,7 +1,6 @@
 package com.example.construction_company_management.annotation;
 
-
-import com.example.construction_company_management.entity.Employee;
+import com.example.construction_company_management.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -9,8 +8,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.core.annotation.AliasFor;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,24 +18,25 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.GET)
 @Operation(
-        summary = "Show employee by ID",
-        description = "Retrieve an employee by its unique identifier",
-        tags = {"EMPLOYEE"},
+        summary = "Show user by ID",
+        description = "Retrieve an user by its unique identifier",
+        tags = {"USER"},
         parameters = {
                 @Parameter(
                         name = "id",
-                        description = "unique identifier of employee",
+                        description = "unique identifier of user",
                         required = true,
                         in = ParameterIn.PATH,
-                        schema = @Schema(type = "string", format = "uuid"),
+                        schema = @Schema(type = "string", format = "string"),
                         examples = {
                                 @ExampleObject(
                                         name = "Example request with correct Id",
-                                        value = "a2b4f08a-734e-42c7-83e1-ccea7d50a461"
+                                        value = "0f9368f4-518f-48cb-b917-2f0f967dd41e"
                                 ),
                                 @ExampleObject(
                                         name = "Example request with invalid Id",
@@ -48,10 +48,10 @@ import java.lang.annotation.Target;
         responses = {
                 @ApiResponse(
                         responseCode = "200",
-                        description = "Employee found and returned",
+                        description = "User found and returned",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = Employee.class)
+                                schema = @Schema(implementation = User.class)
                         )
                 ),
                 @ApiResponse(
@@ -59,21 +59,20 @@ import java.lang.annotation.Target;
                         description = "Invalid ID",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = org.springframework.web.ErrorResponse.class)
+                                schema = @Schema(implementation = ErrorResponse.class)
                         )
                 ),
                 @ApiResponse(
                         responseCode = "404",
-                        description = "Employee not found",
+                        description = "User not found",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = org.springframework.web.ErrorResponse.class)
+                                schema = @Schema(implementation = ErrorResponse.class)
                         )
                 )
         }
 )
-
-public @interface GetEmployeeById {
+public @interface GetUserById {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")
     String[] path() default {};
 }
