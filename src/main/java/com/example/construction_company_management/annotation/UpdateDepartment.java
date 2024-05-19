@@ -1,6 +1,7 @@
 package com.example.construction_company_management.annotation;
 
-import com.example.construction_company_management.entity.Employee;
+
+import com.example.construction_company_management.entity.Department;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -9,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.core.annotation.AliasFor;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -23,43 +23,36 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.PUT)
 @Operation(
-        summary = "Update employee",
-        description = "Request for update info of Employee",
-        tags = {"EMPLOYEE"},
+        summary = "Update name of Department by Id",
+        description = "Request for update department name by department ID",
+        tags = {"DEPARTMENT"},
         parameters = {
                 @Parameter(
                         name = "id",
-                        description = "The unique identifier of the employee",
+                        description = "The unique identifier of the department",
                         required = true,
                         in = ParameterIn.PATH,
                         schema = @Schema(format = "string"),
                         examples = {
                                 @ExampleObject(
-                                        name = "Correct id",
-                                        value = "639d7bc4-9845-40aa-84c8-b0f1dced6732"
+                                        name = "Correct Id",
+                                        value = "cb5d6730-c117-473b-9ded-d4cf57a53d75"
                                 )
                         }
                 )
         },
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                description = "Request to update employee info",
+                description = "Request to update department name",
                 required = true,
                 content = @Content(
                         mediaType = "application/json",
-                        schema = @Schema(implementation = UpdateEmployee.class),
+                        schema = @Schema(implementation = Department.class),
                         examples = {
                                 @ExampleObject(
-                                        name = "Update Employee",
+                                        name = "Update name",
                                         value = """
                                                 {
-                                                   "firstName":"Viacheslav",
-                                                   "lastName":"Bolshov",
-                                                   "contactInfo":"bolshov@gmail.com",
-                                                   "age":31,
-                                                   "hireDate":"2023-11-09",
-                                                   "endDate":"2024-11-09",
-                                                   "depName":"Drivers",
-                                                   "roleName":"ROLE_DEFAULT_USER"
+                                                "depName" : "HR"
                                                 }
                                                 """
                                 )
@@ -69,24 +62,23 @@ import java.lang.annotation.Target;
         responses = {
                 @ApiResponse(
                         responseCode = "200",
-                        description = "Employee Info was updated",
+                        description = "Department name was updated",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = UpdateEmployee.class)
+                                schema = @Schema(implementation = ResponseEntityExceptionHandler.class)
                         )
                 ),
                 @ApiResponse(
                         responseCode = "400",
-                        description = "Employee is not found",
+                        description = "Department is not found",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = ErrorResponse.class)
+                                schema = @Schema(implementation = ResponseEntityExceptionHandler.class)
                         )
                 )
         }
-
 )
-public @interface UpdateEmployee {
+public @interface UpdateDepartment {
     @AliasFor(annotation = RequestMapping.class, attribute = "path")
     String[] path() default {};
 }
