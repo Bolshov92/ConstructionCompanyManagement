@@ -8,6 +8,7 @@ import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.service.EmployeeService;
+import com.example.construction_company_management.validation.annotation.UuidFormatChecker;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,20 +25,20 @@ public class EmployeeController {
     private final EmployeeMapper employeeMapper;
 
     @GetEmployeeById(path = "/get/{id}")
-    public Employee getEmployeeById(@PathVariable(name = "id") String id) {
-        return employeeService.getEmployeeById(UUID.fromString(id));
+    public Employee getEmployeeById(@PathVariable(name = "id") @UuidFormatChecker UUID id) {
+        return employeeService.getEmployeeById(id);
     }
 
     @DeleteEmployee(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker  UUID id) {
         employeeService.deleteEmployeeById(id);
         return ResponseEntity.ok("Employee with id " + id + " was deleted");
 
     }
 
     @UpdateEmployee(path = "/update/{id}")
-    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") UUID id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
+    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") @UuidFormatChecker UUID id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
         return employeeService.updateEmployee(id, employeeUpdateDto);
     }
 

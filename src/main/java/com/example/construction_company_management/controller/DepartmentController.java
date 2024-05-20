@@ -10,6 +10,7 @@ import com.example.construction_company_management.dto.DepartmentCreateDto;
 import com.example.construction_company_management.dto.DepartmentUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.service.DepartmentService;
+import com.example.construction_company_management.validation.annotation.UuidFormatChecker;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,13 +35,13 @@ public class DepartmentController {
     }
 
     @DeleteDepartment(path = "/delete/{id}")
-    public ResponseEntity<String> departmentById(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> departmentById(@PathVariable("id") @UuidFormatChecker UUID id) {
         departmentService.deleteDepartmentById(id);
         return ResponseEntity.ok("Department with id " + id + " was deleted");
     }
 
     @UpdateDepartment(path = "/update/{id}")
-    public DepartmentAfterUpdateDto updateDepartment(@PathVariable("id") UUID id, @RequestBody DepartmentUpdateDto departmentUpdateDto) {
+    public DepartmentAfterUpdateDto updateDepartment(@PathVariable("id") @UuidFormatChecker UUID id, @RequestBody DepartmentUpdateDto departmentUpdateDto) {
         return departmentService.updateDepartment(id, departmentUpdateDto);
     }
 

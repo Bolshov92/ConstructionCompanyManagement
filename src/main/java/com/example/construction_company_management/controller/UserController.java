@@ -8,6 +8,7 @@ import com.example.construction_company_management.dto.UserUpdateDto;
 import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.mapper.UserMapper;
 import com.example.construction_company_management.service.UserService;
+import com.example.construction_company_management.validation.annotation.UuidFormatChecker;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,19 +29,19 @@ public class UserController {
     }
 
     @DeleteUser(path = "/delete/{id}")
-    public ResponseEntity<String> deleteUserById(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> deleteUserById(@PathVariable("id") @UuidFormatChecker UUID id) {
         userService.deleteUserById(id);
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
 
     @UpdateUser(path = "/update/{id}")
-    public UserAfterUpdateDto updateUser(@PathVariable("id") UUID id, @RequestBody UserUpdateDto userUpdateDto) {
+    public UserAfterUpdateDto updateUser(@PathVariable("id") @UuidFormatChecker UUID id, @RequestBody UserUpdateDto userUpdateDto) {
         return userService.upDateDto(id, userUpdateDto);
 
     }
 
     @GetUserById(path = "/get/{id}")
-    public User findById(@PathVariable("id") UUID id) {
+    public User findById(@PathVariable("id") @UuidFormatChecker UUID id) {
         return userService.getUserById(id);
     }
 }
