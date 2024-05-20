@@ -40,7 +40,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentAfterCreationDto createDepartment(DepartmentCreateDto departmentCreateDto) {
         Department department = departmentRepository.findByDepName(departmentCreateDto.getDepName());
         if (department != null) {
-            throw new DepartmentAlreadyExists(ErrorMessage.EMPLOYEE_ALREADY_EXISTS);
+            throw new DepartmentAlreadyExists(ErrorMessage.DEPARTMENT_ALREADY_EXISTS);
         }
         Department entity = departmentMapper.toEntity(departmentCreateDto);
         Department departmentAfterCreation = departmentRepository.save(entity);

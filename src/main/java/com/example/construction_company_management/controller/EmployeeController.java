@@ -1,9 +1,6 @@
 package com.example.construction_company_management.controller;
 
-import com.example.construction_company_management.annotation.CreateEmployee;
-import com.example.construction_company_management.annotation.DeleteEmployee;
-import com.example.construction_company_management.annotation.GetEmployeeById;
-import com.example.construction_company_management.annotation.UpdateEmployee;
+import com.example.construction_company_management.annotation.*;
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
 import com.example.construction_company_management.dto.EmployeeAfterUpdateDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
@@ -13,6 +10,7 @@ import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -32,8 +30,9 @@ public class EmployeeController {
 
     @DeleteEmployee(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteEmployeeById(@PathVariable("id") String id) {
-        return employeeService.deleteEmployeeById(UUID.fromString(id));
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") UUID id) {
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.ok("Employee with id " + id + " was deleted");
 
     }
 

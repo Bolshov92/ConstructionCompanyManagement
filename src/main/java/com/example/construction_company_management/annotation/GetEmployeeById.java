@@ -1,6 +1,7 @@
 package com.example.construction_company_management.annotation;
 
 
+import com.example.construction_company_management.controller.handler.ErrorMessage;
 import com.example.construction_company_management.entity.Employee;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -58,7 +59,7 @@ import java.lang.annotation.Target;
                         description = "Invalid ID",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = org.springframework.web.ErrorResponse.class)
+                                schema = @Schema(implementation = ErrorMessage.class)
                         )
                 ),
                 @ApiResponse(
@@ -66,7 +67,7 @@ import java.lang.annotation.Target;
                         description = "Employee not found",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = org.springframework.web.ErrorResponse.class)
+                                schema = @Schema(implementation = ErrorMessage.class)
                         )
                 )
         }

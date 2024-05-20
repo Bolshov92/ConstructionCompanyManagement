@@ -9,10 +9,7 @@ import com.example.construction_company_management.entity.Role;
 import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.entity.UserInfo;
 import com.example.construction_company_management.entity.enums.RoleName;
-import com.example.construction_company_management.exсeption.AuthorityIsFoundException;
-import com.example.construction_company_management.exсeption.ErrorMessage;
-import com.example.construction_company_management.exсeption.RoleIsNotFoundException;
-import com.example.construction_company_management.exсeption.UserNotFoundException;
+import com.example.construction_company_management.exсeption.*;
 import com.example.construction_company_management.mapper.UserMapper;
 import com.example.construction_company_management.repository.AuthorityRepository;
 import com.example.construction_company_management.repository.RoleRepository;
@@ -41,6 +38,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public UserAfterCreationDto createUser(UserCreateDto userCreateDto) {
+        Optional<User> existingUser = userRepository.findByUserInfoUserName(userCreateDto.getUserName());
+        if (existingUser.isPresent()) {
+            throw new UserAlreadyExistsException("User with userName: " + userCreateDto.getUserName() + " already exists");
+        }
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(userCreateDto.getUserName());
         userInfo.setPassword(userCreateDto.getPassword());
@@ -111,7 +112,7 @@ public class UserServiceImpl implements UserService {
 
         Authority authority = authorityRepository.findByUser(user);
         if (authority == null) {
-            throw new AuthorityIsFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with id: " + id);
+            throw new AuthorityNotFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with id: " + id);
         }
 
         if (!role.getRoleName().equals(userUpdateDto.getRoleName())) {
@@ -135,7 +136,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public User getUserById(UUID id) {
         User user = userRepository.findUserById(id);
-        if(user == null){
+        if (user == null) {
             throw new UserNotFoundException(ErrorMessage.USER_IS_NOT_FOUND);
         }
         return user;

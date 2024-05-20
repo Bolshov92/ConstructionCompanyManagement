@@ -1,5 +1,7 @@
 package com.example.construction_company_management.annotation;
 
+import com.example.construction_company_management.controller.handler.ErrorMessage;
+import com.example.construction_company_management.entity.Employee;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -8,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.core.annotation.AliasFor;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -70,15 +71,15 @@ import java.lang.annotation.Target;
                         description = "Employee Info was updated",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = UpdateEmployee.class)
+                                schema = @Schema(implementation = Employee.class)
                         )
                 ),
                 @ApiResponse(
-                        responseCode = "400",
+                        responseCode = "404",
                         description = "Employee is not found",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = ErrorResponse.class)
+                                schema = @Schema(implementation = ErrorMessage.class)
                         )
                 )
         }

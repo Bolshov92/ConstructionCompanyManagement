@@ -9,4 +9,6 @@ public class ErrorMessage {
     public static final String USER_IS_NOT_FOUND = "USER_IS_NOT_FOUND";
     public static final String ROLE_IS_NOT_FOUND = "ROLE_IS_NOT_FOUND";
     public static final String AUTHORITY_IS_NOT_FOUND = "AUTHORITY_IS_NOT_FOUND";
+    public static final String USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS";
+    public static final String NotUuidFormat = "IT_IS_NOT_UUID_FORMAT";
 }

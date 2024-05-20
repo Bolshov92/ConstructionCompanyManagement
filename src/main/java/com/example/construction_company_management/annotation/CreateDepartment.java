@@ -1,5 +1,6 @@
 package com.example.construction_company_management.annotation;
 
+import com.example.construction_company_management.controller.handler.ErrorMessage;
 import com.example.construction_company_management.entity.Department;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,7 +10,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -43,19 +43,19 @@ import java.lang.annotation.Target;
         ),
         responses = {
                 @ApiResponse(
-                        responseCode = "201",
+                        responseCode = "200",
                         description = "Department created",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = Department.class)
+                                schema = @Schema(implementation = ErrorMessage.class)
                         )
                 ),
                 @ApiResponse(
-                        responseCode = "400",
+                        responseCode = "409",
                         description = "Department already exists",
                         content = @Content(
                                 mediaType = "application/json",
-                                schema = @Schema(implementation = ResponseEntityExceptionHandler.class)
+                                schema = @Schema(implementation = ErrorMessage.class)
                         )
                 )
         }

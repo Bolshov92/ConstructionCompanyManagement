@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS role
 CREATE TABLE IF NOT EXISTS user_info
 (
     id      BINARY(16) PRIMARY KEY,
-    user_name    VARCHAR(255),
+    user_name    VARCHAR(255) ,
     password     VARCHAR(255),
     phone_number VARCHAR(20),
     user_id BINARY(16)
