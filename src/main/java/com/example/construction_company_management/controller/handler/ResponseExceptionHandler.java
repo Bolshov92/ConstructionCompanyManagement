@@ -1,10 +1,12 @@
 package com.example.construction_company_management.controller.handler;
 
 import com.example.construction_company_management.exсeption.*;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
@@ -74,5 +76,15 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 e.getMessage(), HttpStatus.NOT_FOUND),
                 HttpStatus.NOT_FOUND);
 
+    }
+    @ExceptionHandler(value = { ConstraintViolationException.class, InvalidIdException.class })
+    protected ResponseEntity<Object> handleInvalidIdException(RuntimeException ex, WebRequest request) {
+        String errorMessage = ex.getMessage();
+        HttpStatus errorCode = HttpStatus.BAD_REQUEST;
+        if (ex instanceof ConstraintViolationException) {
+            errorMessage = ((ConstraintViolationException) ex).getMessage();
+        }
+        ErrorMessage errorExtension = new ErrorMessage(errorMessage, errorCode);
+        return new ResponseEntity<>(errorExtension, errorCode);
     }
 }

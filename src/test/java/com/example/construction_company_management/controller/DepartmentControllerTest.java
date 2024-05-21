@@ -52,7 +52,7 @@ public class DepartmentControllerTest {
                 .andExpect(status().isOk());
     }
 
-        @Test
+    @Test
     void deleteDepartmentByIdPositiveTest() throws Exception {
         UUID id = UUID.fromString("02614a58-e256-482c-9284-c188c00a7ec6");
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/department/delete/{id}", id))

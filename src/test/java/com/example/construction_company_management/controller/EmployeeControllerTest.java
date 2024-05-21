@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -63,7 +64,7 @@ class EmployeeControllerTest {
         EmployeeAfterCreationDto afterCreationDto = objectMapper.readValue(jsonResult, EmployeeAfterCreationDto.class);
         System.out.println(jsonResult);
 
-        Assertions.assertEquals(200, result.getResponse().getStatus());
+        Assertions.assertEquals(201, result.getResponse().getStatus());
     }
 
     @Test

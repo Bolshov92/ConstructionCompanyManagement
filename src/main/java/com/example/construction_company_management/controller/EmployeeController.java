@@ -25,21 +25,21 @@ public class EmployeeController {
     private final EmployeeMapper employeeMapper;
 
     @GetEmployeeById(path = "/get/{id}")
-    public Employee getEmployeeById(@PathVariable(name = "id") @UuidFormatChecker UUID id) {
-        return employeeService.getEmployeeById(id);
+    public Employee getEmployeeById(@PathVariable(name = "id") @UuidFormatChecker String id) {
+        return employeeService.getEmployeeById(UUID.fromString(id));
     }
 
     @DeleteEmployee(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker  UUID id) {
-        employeeService.deleteEmployeeById(id);
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker  String id) {
+        employeeService.deleteEmployeeById(UUID.fromString(id));
         return ResponseEntity.ok("Employee with id " + id + " was deleted");
 
     }
 
     @UpdateEmployee(path = "/update/{id}")
-    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") @UuidFormatChecker UUID id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
-        return employeeService.updateEmployee(id, employeeUpdateDto);
+    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") @UuidFormatChecker String id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
+        return employeeService.updateEmployee(UUID.fromString(id), employeeUpdateDto);
     }
 
     @CreateEmployee(path = "/create")
