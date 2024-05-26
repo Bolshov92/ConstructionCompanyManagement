@@ -8,13 +8,19 @@ spring:
     password: ${DATASOURCE_PASSWORD}
 
   jpa:
-   hibernate:
-    ddl-auto: none
+    hibernate:
+      ddl-auto: none
 
   sql:
-   init:
-    schema-locations: classpath:db/schema.sql
-    mode: always
-    data-locations: classpath:db/data.sql
+    init:
+      schema-locations: classpath:db/schema.sql
+      mode: always
+      data-locations: classpath:db/data.sql
+logging:
+  level:
+    root: INFO
+    com.example.construction_company_management: DEBUG
+  file:
+    name: construction_company_management.log
 server:
   port: 8091
