@@ -24,8 +24,6 @@ import static org.springframework.boot.context.properties.source.ConfigurationPr
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
-    private final UserMapper userMapper;
-
 
     @CreateUser(path = "/create")
     public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) {

@@ -22,7 +22,6 @@ import java.util.UUID;
 @RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
-    private final EmployeeMapper employeeMapper;
 
     @GetEmployeeById(path = "/get/{id}")
     public Employee getEmployeeById(@PathVariable(name = "id") @UuidFormatChecker String id) {
@@ -31,7 +30,7 @@ public class EmployeeController {
 
     @DeleteEmployee(path = "/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker  String id) {
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker String id) {
         employeeService.deleteEmployeeById(UUID.fromString(id));
         return ResponseEntity.ok("Employee with id " + id + " was deleted");
 

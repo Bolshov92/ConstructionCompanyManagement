@@ -44,5 +44,4 @@ public class DepartmentController {
     public DepartmentAfterUpdateDto updateDepartment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody DepartmentUpdateDto departmentUpdateDto) {
         return departmentService.updateDepartment(UUID.fromString(id), departmentUpdateDto);
     }
-
 }
