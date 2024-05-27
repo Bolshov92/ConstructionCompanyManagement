@@ -9,8 +9,6 @@ DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS department;
 
-
-
 CREATE TABLE IF NOT EXISTS role
 (
     role_id   BINARY(16) PRIMARY KEY,
@@ -19,11 +17,11 @@ CREATE TABLE IF NOT EXISTS role
 
 CREATE TABLE IF NOT EXISTS user_info
 (
-    id      BINARY(16) PRIMARY KEY,
-    user_name    VARCHAR(255) ,
+    id           BINARY(16) PRIMARY KEY,
+    user_name    VARCHAR(255),
     password     VARCHAR(255),
     phone_number VARCHAR(20),
-    user_id BINARY(16)
+    user_id      BINARY(16)
 
 );
 CREATE TABLE IF NOT EXISTS users

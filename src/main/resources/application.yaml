@@ -3,7 +3,7 @@ spring:
     banner-mode: off
 
   datasource:
-    url: ${DATASOURCE_URL}
+    url: ${DATASOURCE_URL}?allowMultiQueries=true
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
 
@@ -23,4 +23,4 @@ logging:
     name: construction_company_management.log
 
 server:
-  port: 8091
+  port: 8092

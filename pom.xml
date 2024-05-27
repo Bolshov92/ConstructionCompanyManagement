@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.2.0</version>
+
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -41,11 +41,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.security</groupId>-->
-        <!--            <artifactId>spring-security-test</artifactId>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
@@ -157,6 +152,18 @@
                         <exclude>com/example/construction_company_management/aspect/*</exclude>
                         <exclude>com/example/construction_company_management/exception/*</exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.8.0</version>
+                <configuration>
+                    <changeLogFile>src/main/resources/db/changelog/changelog-master.xml</changeLogFile>
+                    <url>jdbc:mysql://localhost:3306/company_management</url>
+                    <username>root</username>
+                    <password>Bolshov92</password>
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
                 </configuration>
             </plugin>
         </plugins>

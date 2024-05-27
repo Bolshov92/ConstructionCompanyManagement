@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EmployeeMapper {
-    default UUID mapRoleToRoleId(Role role){
+    default UUID mapRoleToRoleId(Role role) {
         return role.getRoleId();
     }
 
