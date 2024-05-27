@@ -31,12 +31,12 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 e.getMessage(), HttpStatus.NOT_FOUND),
                 HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ErrorMessage> handleUserAlreadyExistsException(Exception e) {
         return new ResponseEntity<>(new ErrorMessage(
                 e.getMessage(), HttpStatus.CONFLICT),
                 HttpStatus.CONFLICT);
-
     }
 
     @ExceptionHandler(DepartmentAlreadyExists.class)
@@ -44,7 +44,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ErrorMessage(
                 e.getMessage(), HttpStatus.CONFLICT),
                 HttpStatus.CONFLICT);
-
     }
 
     @ExceptionHandler(DepartmentNotFoundException.class)
@@ -52,7 +51,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ErrorMessage(
                 e.getMessage(), HttpStatus.NOT_FOUND),
                 HttpStatus.NOT_FOUND);
-
     }
 
     @ExceptionHandler(EmployeeAlreadyExistsException.class)
@@ -60,7 +58,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ErrorMessage(
                 e.getMessage(), HttpStatus.CONFLICT),
                 HttpStatus.CONFLICT);
-
     }
 
     @ExceptionHandler(EmployeeNotExistExсeption.class)
@@ -75,14 +72,14 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ErrorMessage(
                 e.getMessage(), HttpStatus.NOT_FOUND),
                 HttpStatus.NOT_FOUND);
-
     }
-    @ExceptionHandler(value = { ConstraintViolationException.class, InvalidIdException.class })
+
+    @ExceptionHandler(value = {ConstraintViolationException.class, InvalidIdException.class})
     protected ResponseEntity<Object> handleInvalidIdException(RuntimeException ex, WebRequest request) {
         String errorMessage = ex.getMessage();
         HttpStatus errorCode = HttpStatus.BAD_REQUEST;
-        if (ex instanceof ConstraintViolationException) {
-            errorMessage = ((ConstraintViolationException) ex).getMessage();
+        if (ex instanceof ConstraintViolationException constraintViolationException) {
+            errorMessage = constraintViolationException.getMessage();
         }
         ErrorMessage errorExtension = new ErrorMessage(errorMessage, errorCode);
         return new ResponseEntity<>(errorExtension, errorCode);

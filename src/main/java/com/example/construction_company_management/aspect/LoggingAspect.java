@@ -27,36 +27,53 @@ public class LoggingAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes != null ? attributes.getRequest() : null;
         if (request != null) {
-            log.info("NEW REQUEST:\n" +
-                            "IP : {}\n" +
-                            "URL : {}\n" +
-                            "HTTP_METHOD : {}\n" +
-                            "CONTROLLER_METHOD : {}.{}",
+            String logMessage = """
+                    NEW REQUEST:
+                    IP : %s
+                    URL : %s
+                    HTTP_METHOD : %s
+                    CONTROLLER_METHOD : %s.%s
+                    """.formatted(
                     request.getRemoteAddr(),
                     request.getRequestURL().toString(),
                     request.getMethod(),
                     jp.getSignature().getDeclaringTypeName(),
                     jp.getSignature().getName());
+
+            log.info(logMessage);
         }
     }
 
     @Before("serviceLog()")
     public void doBeforeService(JoinPoint jp) {
-        log.info("RUN SERVICE:\n" +
-                        "SERVICE_METHOD : {}.{}",
-                jp.getSignature().getDeclaringTypeName(), jp.getSignature().getName());
+        String logMessage = """
+                RUN SERVICE:
+                SERVICE_METHOD : %s.%s
+                """.formatted(
+                jp.getSignature().getDeclaringTypeName(),
+                jp.getSignature().getName());
+
+        log.info(logMessage);
     }
 
     @AfterReturning(returning = "returnObject", pointcut = "controllerLog()")
     public void doAfterReturning(Object returnObject) {
-        log.info("Return value: {}\n" +
-                        "END OF REQUEST",
-                returnObject);
+        String logMessage = """
+                Return value: %s
+                END OF REQUEST
+                """.formatted(returnObject);
+
+        log.info(logMessage);
     }
 
     @AfterThrowing(throwing = "ex", pointcut = "controllerLog()")
     public void throwsException(JoinPoint jp, Exception ex) {
-        log.error("Request threw an exception. Arguments - {}. Cause - {}",
-                Arrays.toString(jp.getArgs()), ex.getMessage());
+        String logMessage = """
+                Request threw an exception. Arguments - %s. Cause - %s
+                """.formatted(
+                Arrays.toString(jp.getArgs()),
+                ex.getMessage());
+
+        log.error(logMessage);
     }
 }
