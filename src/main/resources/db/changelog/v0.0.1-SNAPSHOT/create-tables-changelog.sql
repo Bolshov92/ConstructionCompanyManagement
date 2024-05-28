@@ -11,27 +11,27 @@ DROP TABLE IF EXISTS department;
 CREATE TABLE IF NOT EXISTS role
 (
     role_id   BINARY(16) PRIMARY KEY,
-    role_name VARCHAR(255) NOT NULL UNIQUE
+    role_name VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS user_info
 (
     id           BINARY(16) PRIMARY KEY,
-    user_name    VARCHAR(255) NOT NULL UNIQUE,
-    password     VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(20)  NOT NULL,
-    user_id      BINARY(16)   NOT NULL UNIQUE
+    user_name    VARCHAR(255),
+    password     VARCHAR(255),
+    phone_number VARCHAR(20),
+    user_id      BINARY(16)
 );
 
 CREATE TABLE IF NOT EXISTS users
 (
     id                BINARY(16) PRIMARY KEY,
-    first_name        VARCHAR(255) NOT NULL,
-    last_name         VARCHAR(255) NOT NULL,
-    date_of_birth     DATE         NOT NULL,
-    registration_date DATE         NOT NULL,
-    user_info_id      BINARY(16)   NOT NULL,
-    role_id           BINARY(16)   NOT NULL,
+    first_name        VARCHAR(255),
+    last_name         VARCHAR(255),
+    date_of_birth     DATE,
+    registration_date DATE,
+    user_info_id      BINARY(16),
+    role_id           BINARY(16),
     FOREIGN KEY (user_info_id) REFERENCES user_info (id),
     FOREIGN KEY (role_id) REFERENCES role (role_id)
 );
@@ -39,9 +39,9 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS authority
 (
     id        BINARY(16) PRIMARY KEY,
-    authority VARCHAR(255) NOT NULL,
-    role_id   BINARY(16)   NOT NULL,
-    user_id   BINARY(16)   NOT NULL,
+    authority VARCHAR(255),
+    role_id   BINARY(16),
+    user_id   BINARY(16),
     FOREIGN KEY (role_id) REFERENCES role (role_id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );

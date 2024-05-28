@@ -3,7 +3,6 @@ package com.example.construction_company_management.dto;
 import lombok.Value;
 
 import java.util.Date;
-import java.util.UUID;
 
 
 @Value

@@ -1,23 +1,25 @@
 package com.example.construction_company_management.controller;
 
-import com.example.construction_company_management.annotation.*;
+import com.example.construction_company_management.annotation.CreateUser;
+import com.example.construction_company_management.annotation.DeleteUser;
+import com.example.construction_company_management.annotation.GetUserById;
+import com.example.construction_company_management.annotation.UpdateUser;
 import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
 import com.example.construction_company_management.entity.User;
-import com.example.construction_company_management.exсeption.InvalidIdException;
-import com.example.construction_company_management.mapper.UserMapper;
 import com.example.construction_company_management.service.UserService;
 import com.example.construction_company_management.validation.annotation.UuidFormatChecker;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
-
-import static org.springframework.boot.context.properties.source.ConfigurationPropertyName.isValid;
 
 @RestController
 @AllArgsConstructor
