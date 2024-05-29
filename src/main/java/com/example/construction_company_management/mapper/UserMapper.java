@@ -37,6 +37,5 @@ public interface UserMapper {
     @Mapping(target = "userId", source = "id")
     UserAfterCreationDto toDto(User user);
 
-
     UserAfterUpdateDto afterUpdate(User afterUpdateUser);
 }
