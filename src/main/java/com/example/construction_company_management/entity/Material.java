@@ -9,6 +9,9 @@ import lombok.Setter;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing a material used in construction projects.
+ */
 @Entity
 @Getter
 @Setter

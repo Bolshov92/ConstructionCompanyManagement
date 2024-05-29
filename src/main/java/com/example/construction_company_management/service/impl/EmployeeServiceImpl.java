@@ -21,7 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
-
+/**
+ * Implementation of the EmployeeService interface, providing methods for managing employees
+ * This service handles the creation, updating, deletion, and retrieval of employees.
+ */
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {

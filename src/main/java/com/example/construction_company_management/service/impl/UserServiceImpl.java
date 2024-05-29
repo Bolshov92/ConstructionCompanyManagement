@@ -25,6 +25,10 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Implementation of the UserService interface, providing methods for managing users
+ * This service handles the creation, updating, deletion, and retrieval of users.
+ */
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -33,7 +37,6 @@ public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
     private final RoleRepository roleRepository;
     private final AuthorityRepository authorityRepository;
-
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)

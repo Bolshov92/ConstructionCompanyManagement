@@ -19,6 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Implementation of the DepartmentService interface, providing methods for managing departments
+ * This service handles the creation, updating, deletion, and retrieval of departments.
+ */
 @Service
 @RequiredArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {

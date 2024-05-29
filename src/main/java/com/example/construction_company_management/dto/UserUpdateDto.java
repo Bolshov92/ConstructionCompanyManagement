@@ -4,6 +4,9 @@ import lombok.Value;
 
 import java.util.Date;
 
+/**
+ * DTO representing the data required to update a user.
+ */
 @Value
 public class UserUpdateDto {
     String firstName;

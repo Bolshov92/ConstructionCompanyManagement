@@ -10,6 +10,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.Arrays;
 
+/**
+ * Aspect for logging requests and service invocations in the construction company management application.
+ * Provides logging before controller methods, before service methods, after successful controller method execution,
+ * and when exceptions are thrown during controller method execution.
+ */
 @Aspect
 @Component
 @Slf4j

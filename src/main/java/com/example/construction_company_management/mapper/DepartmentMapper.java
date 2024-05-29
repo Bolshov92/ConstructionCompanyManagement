@@ -7,6 +7,10 @@ import com.example.construction_company_management.dto.DepartmentUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import org.mapstruct.*;
 
+/**
+ * Mapper interface for converting between Department entity and its corresponding DTO.
+ */
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface DepartmentMapper {
 

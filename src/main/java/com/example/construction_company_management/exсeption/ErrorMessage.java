@@ -1,5 +1,10 @@
 package com.example.construction_company_management.exсeption;
 
+/**
+ * Class defining constants for error messages used in the application.
+ * These constants represent various error scenarios related to employees, departments, users, roles, and authorities.
+ */
+
 public class ErrorMessage {
     public static final String EMPLOYEE_NOT_EXIST = "EMPLOYEE_NOT_EXIST";
     public static final String EMPLOYEE_IS_NOT_FOUND = "EMPLOYEE_IS_NOT_FOUND";

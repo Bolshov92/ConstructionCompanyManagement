@@ -9,6 +9,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Entity class representing a department.
+ */
 @Entity
 @Getter
 @Setter

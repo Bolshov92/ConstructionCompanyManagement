@@ -1,6 +1,5 @@
 package com.example.construction_company_management.entity;
 
-import com.example.construction_company_management.entity.enums.RoleName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,6 +12,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Entity class representing a user in the system.
+ */
 @Entity
 @Getter
 @Setter

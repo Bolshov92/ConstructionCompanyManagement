@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+/**
+ * Controller class handling HTTP requests related to departments.
+ * Contains endpoints for creating, updating, retrieving, and deleting departments.
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/department")

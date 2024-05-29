@@ -10,6 +10,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
+/**
+ * Mapper interface for converting between User entity and its corresponding DTO.
+ */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
     UserAfterCreationDto userAfterCreationDto(User user);

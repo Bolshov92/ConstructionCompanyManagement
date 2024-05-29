@@ -19,6 +19,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Custom annotation for GET requests to retrieve a department by its name.
+ * This annotation configures Swagger documentation to describe the API endpoint.
+ * It includes request parameters, response messages, and example usage.
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.GET)

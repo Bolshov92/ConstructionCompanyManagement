@@ -4,7 +4,9 @@ import lombok.Value;
 
 import java.util.Date;
 
-
+/**
+ * DTO class representing the data needed to create a new user.
+ */
 @Value
 public class UserCreateDto {
     String firstName;

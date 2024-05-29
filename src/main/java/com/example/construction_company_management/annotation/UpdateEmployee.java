@@ -18,6 +18,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Custom annotation for PUT requests to update an employee.
+ * This annotation configures Swagger documentation to describe the API endpoint.
+ * It includes request parameters, request body, response messages, and example usage.
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.PUT)

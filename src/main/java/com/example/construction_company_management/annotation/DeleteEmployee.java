@@ -15,6 +15,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Custom annotation for DELETE requests to delete an employee by ID.
+ * This annotation configures Swagger documentation to describe the API endpoint.
+ * It includes parameter details, response messages, and example usage.
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @RequestMapping(method = RequestMethod.DELETE)

@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class handling HTTP requests related to users.
+ * Contains endpoints for creating, updating, retrieving, and deleting users.
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user")

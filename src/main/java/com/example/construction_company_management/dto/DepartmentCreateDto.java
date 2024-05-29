@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Value;
 
+/**
+ * DTO class representing the data needed to create a new department.
+ */
 @Value
 @NoArgsConstructor(force = true)
 @AllArgsConstructor

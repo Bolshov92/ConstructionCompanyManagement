@@ -9,6 +9,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
+/**
+ * Entity class representing additional user information.
+ */
+
 @Entity
 @Getter
 @Setter

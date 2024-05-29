@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-
+/**
+ * Controller class handling HTTP requests related to employees.
+ * Contains endpoints for retrieving, creating, updating, and deleting employees.
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/employee")

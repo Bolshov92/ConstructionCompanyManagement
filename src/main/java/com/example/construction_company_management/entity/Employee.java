@@ -11,6 +11,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing an employee in the system.
+ */
 @Entity
 @Getter
 @Setter
