@@ -1,12 +1,12 @@
 package com.example.construction_company_management.dto;
 
-import com.example.construction_company_management.entity.Employee;
-import com.example.construction_company_management.entity.Role;
 import lombok.Value;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
+/**
+ * DTO class representing the data needed to create a new employee.
+ */
 @Value
 public class EmployeeCreateDto {
     String firstName;

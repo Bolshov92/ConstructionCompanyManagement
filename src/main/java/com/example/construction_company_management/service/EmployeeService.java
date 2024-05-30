@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface EmployeeService {
     Employee getEmployeeById(UUID id);
 
-    void deleteEmployeeById(UUID id);
+    String deleteEmployeeById(UUID id);
 
     EmployeeAfterUpdateDto updateEmployee(UUID id, EmployeeUpdateDto employeeUpdateDto);
 

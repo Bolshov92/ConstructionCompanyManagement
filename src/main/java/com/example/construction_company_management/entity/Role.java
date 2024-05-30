@@ -1,7 +1,6 @@
 package com.example.construction_company_management.entity;
 
 import jakarta.persistence.*;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +10,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Entity class representing a role.
+ */
 @Entity
 @Getter
 @Setter

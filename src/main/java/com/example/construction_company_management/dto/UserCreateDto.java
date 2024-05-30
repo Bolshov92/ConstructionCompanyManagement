@@ -3,9 +3,10 @@ package com.example.construction_company_management.dto;
 import lombok.Value;
 
 import java.util.Date;
-import java.util.UUID;
 
-
+/**
+ * DTO class representing the data needed to create a new user.
+ */
 @Value
 public class UserCreateDto {
     String firstName;

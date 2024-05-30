@@ -1,6 +1,5 @@
 package com.example.construction_company_management.entity;
 
-import com.example.construction_company_management.entity.enums.RoleName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,11 +12,14 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Entity class representing a user in the system.
+ */
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -40,9 +42,10 @@ public class User {
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;

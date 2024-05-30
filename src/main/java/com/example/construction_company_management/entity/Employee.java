@@ -1,6 +1,7 @@
 package com.example.construction_company_management.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Entity class representing an employee in the system.
+ */
 @Entity
 @Getter
 @Setter
@@ -39,10 +43,12 @@ public class Employee {
     @Column(name = "end_date")
     private LocalDate endDate;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;

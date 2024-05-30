@@ -7,10 +7,7 @@ import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Department;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.entity.Role;
-import com.example.construction_company_management.exсeption.DepartmentNotFoundException;
-import com.example.construction_company_management.exсeption.EmployeeIsNotFound;
-import com.example.construction_company_management.exсeption.EmployeeNotExistExсeption;
-import com.example.construction_company_management.exсeption.ErrorMessage;
+import com.example.construction_company_management.exсeption.*;
 import com.example.construction_company_management.mapper.EmployeeMapper;
 import com.example.construction_company_management.repository.DepartmentRepository;
 import com.example.construction_company_management.repository.EmployeeRepository;
@@ -24,7 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
-
+/**
+ * Implementation of the EmployeeService interface, providing methods for managing employees
+ * This service handles the creation, updating, deletion, and retrieval of employees.
+ */
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
@@ -33,23 +33,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DepartmentRepository departmentRepository;
     private final RoleRepository roleRepository;
 
+
+
+
+
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public Employee getEmployeeById(UUID id) {
         Employee employee = employeeRepository.getEmployeeById(id);
         if (employee == null) {
-            throw new EmployeeNotExistExсeption(ErrorMessage.EMPLOYEE_NOT_EXIST);
+            throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_NOT_EXIST);
+
         }
         return employee;
     }
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public void deleteEmployeeById(UUID id) {
+    public String deleteEmployeeById(UUID id) {
         if (!employeeRepository.existsById(id)) {
             throw new EmployeeIsNotFound(ErrorMessage.EMPLOYEE_IS_NOT_FOUND);
         }
         employeeRepository.deleteById(id);
+        return null;
     }
 
 
@@ -87,7 +93,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public EmployeeAfterCreationDto createEmployee(EmployeeCreateDto employeeCreationDto) {
-
+        String firstName = employeeCreationDto.getFirstName();
+        String lastName = employeeCreationDto.getLastName();
+        Employee existingEmployee = employeeRepository.findEmployeeByFirstNameAndLastName(firstName, lastName);
+        if(existingEmployee!= null) {
+            throw new EmployeeAlreadyExistsException("Employee with name " + firstName + "" + lastName + " already exist");
+        }
         Role role = roleRepository.findByRoleName(employeeCreationDto.getRoleName());
         if (role == null) {
             role = new Role();

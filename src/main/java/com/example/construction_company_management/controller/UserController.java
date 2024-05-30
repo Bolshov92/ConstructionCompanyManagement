@@ -1,43 +1,55 @@
 package com.example.construction_company_management.controller;
 
+import com.example.construction_company_management.annotation.CreateUser;
+import com.example.construction_company_management.annotation.DeleteUser;
+import com.example.construction_company_management.annotation.GetUserById;
+import com.example.construction_company_management.annotation.UpdateUser;
 import com.example.construction_company_management.dto.UserAfterCreationDto;
 import com.example.construction_company_management.dto.UserAfterUpdateDto;
 import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
 import com.example.construction_company_management.entity.User;
 import com.example.construction_company_management.service.UserService;
+import com.example.construction_company_management.validation.annotation.UuidFormatChecker;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
+/**
+ * Controller class handling HTTP requests related to users.
+ * Contains endpoints for creating, updating, retrieving, and deleting users.
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
-
-    @PostMapping("/create")
+    @CreateUser(path = "/create")
     public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) {
         return userService.createUser(userCreateDto);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> userById(@PathVariable("id") UUID id) {
-        userService.deleteUserById(id);
+    @DeleteUser(path = "/delete/{id}")
+    public ResponseEntity<String> deleteUserById(@PathVariable("id") @Valid @UuidFormatChecker String id) {
+        userService.deleteUserById(UUID.fromString(id));
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
 
-    @PutMapping("/update/{id}")
-    public UserAfterUpdateDto updateUser(@PathVariable("id") UUID id, @RequestBody UserUpdateDto userUpdateDto) {
-        return userService.upDateDto(id, userUpdateDto);
+    @UpdateUser(path = "/update/{id}")
+    public UserAfterUpdateDto updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody UserUpdateDto userUpdateDto) {
+        return userService.upDateDto(UUID.fromString(id), userUpdateDto);
 
     }
 
-    @GetMapping("/get/{id}")
-    public User findById(@PathVariable("id") UUID id) {
-        return userService.getUserById(id);
+    @GetUserById(path = "/get/{id}")
+    public User findById(@PathVariable("id") @UuidFormatChecker String id) {
+        return userService.getUserById(UUID.fromString(id));
     }
 }

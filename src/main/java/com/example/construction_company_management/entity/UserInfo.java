@@ -9,6 +9,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
+/**
+ * Entity class representing additional user information.
+ */
+
 @Entity
 @Getter
 @Setter
@@ -19,8 +23,8 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid_generator")
     @GenericGenerator(name = "uuid_generator", strategy = "com.example.construction_company_management.uuidGenerator.UuidTimeSequenceGenerator")
-    @Column(name = "user_id")
-    private UUID userId;
+    @Column(name = "id")
+    private UUID id;
 
     @Column(name = "user_name")
     private String userName;

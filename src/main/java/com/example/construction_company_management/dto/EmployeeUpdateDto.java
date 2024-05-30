@@ -4,6 +4,9 @@ import lombok.Value;
 
 import java.time.LocalDate;
 
+/**
+ * DTO class representing the data needed to update an existing employee.
+ */
 @Value
 public class EmployeeUpdateDto {
     String firstName;

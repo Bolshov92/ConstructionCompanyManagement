@@ -1,44 +1,54 @@
 package com.example.construction_company_management.controller;
 
+import com.example.construction_company_management.annotation.CreateEmployee;
+import com.example.construction_company_management.annotation.DeleteEmployee;
+import com.example.construction_company_management.annotation.GetEmployeeById;
+import com.example.construction_company_management.annotation.UpdateEmployee;
 import com.example.construction_company_management.dto.EmployeeAfterCreationDto;
 import com.example.construction_company_management.dto.EmployeeAfterUpdateDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
 import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Employee;
 import com.example.construction_company_management.service.EmployeeService;
+import com.example.construction_company_management.validation.annotation.UuidFormatChecker;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-
+/**
+ * Controller class handling HTTP requests related to employees.
+ * Contains endpoints for retrieving, creating, updating, and deleting employees.
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
-
-    @GetMapping("/get/{id}")
-    public Employee getEmployeeById(@PathVariable("id") UUID id) {
-        return employeeService.getEmployeeById(id);
+    @GetEmployeeById(path = "/get/{id}")
+    public Employee getEmployeeById(@PathVariable(name = "id") @UuidFormatChecker String id) {
+        return employeeService.getEmployeeById(UUID.fromString(id));
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") UUID id) {
-        employeeService.deleteEmployeeById(id);
+    @DeleteEmployee(path = "/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker String id) {
+        employeeService.deleteEmployeeById(UUID.fromString(id));
         return ResponseEntity.ok("Employee with id " + id + " was deleted");
+
     }
 
-    @PutMapping("/update/{id}")
-    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") UUID id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
-        return employeeService.updateEmployee(id, employeeUpdateDto);
+    @UpdateEmployee(path = "/update/{id}")
+    public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") @UuidFormatChecker String id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
+        return employeeService.updateEmployee(UUID.fromString(id), employeeUpdateDto);
     }
 
-    @PostMapping("/create")
+    @CreateEmployee(path = "/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public EmployeeAfterCreationDto createEmployee(@RequestBody EmployeeCreateDto employeeCreateDto) {
         return employeeService.createEmployee(employeeCreateDto);
     }
-
 }
