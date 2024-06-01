@@ -14,6 +14,7 @@ import com.example.construction_company_management.validation.annotation.UuidFor
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ public class UserController {
     private final UserService userService;
 
     @CreateUser(path = "/create")
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserAfterCreationDto createUser(@RequestBody UserCreateDto userCreateDto) {
         return userService.createUser(userCreateDto);
     }
@@ -49,6 +51,7 @@ public class UserController {
     }
 
     @GetUserById(path = "/get/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public User findById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.getUserById(UUID.fromString(id));
     }

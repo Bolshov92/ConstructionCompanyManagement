@@ -22,5 +22,5 @@ logging:
   file:
     name: construction_company_management.log
 
-server:
-  port: 8092
+#server:
+#  port: 8092

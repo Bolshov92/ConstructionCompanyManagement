@@ -2,15 +2,10 @@ package com.example.construction_company_management.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Date;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Entity class representing a user in the system.
@@ -46,13 +41,13 @@ public class User {
     private UserInfo userInfo;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Authority> authorities;
+    private Set<Authority> authorities = new HashSet<>();
 
 
     @Override
