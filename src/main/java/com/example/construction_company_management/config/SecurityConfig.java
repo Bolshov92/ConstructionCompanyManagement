@@ -1,7 +1,7 @@
 package com.example.construction_company_management.config;
 
 import com.example.construction_company_management.controller.handler.CustomAccessDeniedHandler;
-import com.example.construction_company_management.sequrity.UserDetailsServiceImpl;
+import com.example.construction_company_management.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

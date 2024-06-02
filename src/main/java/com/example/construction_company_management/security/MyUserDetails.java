@@ -1,4 +1,4 @@
-package com.example.construction_company_management.sequrity;
+package com.example.construction_company_management.security;
 
 import com.example.construction_company_management.entity.User;
 import org.springframework.security.core.GrantedAuthority;
