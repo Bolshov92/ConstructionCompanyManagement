@@ -11,10 +11,10 @@ VALUES (CAST('bc878cd0-6ace-44e5-947e-ea9ad03b28eb' AS UUID), 'ROLE_ADMIN'),
 
 
 INSERT INTO user_info (id, user_name, password, phone_number, user_id)
-VALUES (CAST('f2165341-4c7f-4c20-af08-7d0962ac4777' AS UUID),'admin', 'admin_password', '123456789', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e' AS UUID));
+VALUES (CAST('f2165341-4c7f-4c20-af08-7d0962ac4777' AS UUID),'admin', '123123', '123456789', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e' AS UUID));
 
 INSERT INTO users (date_of_birth, first_name, last_name, registration_date, id, user_info_id, role_id)
-VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e'AS UUID),CAST('f2165341-4c7f-4c20-af08-7d0962ac4777'AS UUID), CAST('10240b78-88c6-4a80-87e1-ac3cbf6335a2' AS UUID));
+VALUES ('1990-01-01', 'John', 'Doe', '2024-04-29', CAST('0f9368f4-518f-48cb-b917-2f0f967dd41e'AS UUID),CAST('f2165341-4c7f-4c20-af08-7d0962ac4777'AS UUID), CAST('bc878cd0-6ace-44e5-947e-ea9ad03b28eb' AS UUID));
 
 INSERT INTO department (id, dep_name)
 VALUES (CAST('02614a58-e256-482c-9284-c188c00a7ec6' AS UUID), 'Builders'),
