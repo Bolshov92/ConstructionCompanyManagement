@@ -33,7 +33,6 @@ public interface UserMapper {
     @Mapping(target = "userInfo.password", source = "userCreateDto.password")
     @Mapping(target = "userInfo.phoneNumber", source = "userCreateDto.phoneNumber")
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "role", source = "userCreateDto.roleName")
     User toEntity(UserCreateDto userCreateDto);
 
 
