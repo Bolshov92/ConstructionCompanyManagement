@@ -38,14 +38,14 @@ public class UserController {
     }
 
     @DeleteUser(path = "/delete/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('SUPERVISOR') or hasAuthority('DIRECTOR')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_SUPERVISOR') or hasAuthority('ROLE_DIRECTOR')")
     public ResponseEntity<String> deleteUserById(@PathVariable("id") @Valid @UuidFormatChecker String id) {
         userService.deleteUserById(UUID.fromString(id));
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
 
     @UpdateUser(path = "/update/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DIRECTOR')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
     public UserAfterUpdateDto updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody UserUpdateDto userUpdateDto) {
         return userService.upDateDto(UUID.fromString(id), userUpdateDto);
 
