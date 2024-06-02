@@ -57,8 +57,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 registrationDate,
                 "NickName",
                 "123",
-                "0751677677",
-                "ROLE_ADMIN"
+                "0751677677"
+
         );
 
         String json = objectMapper.writeValueAsString(userCreateDto);
