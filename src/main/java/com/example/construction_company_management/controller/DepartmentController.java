@@ -29,23 +29,27 @@ public class DepartmentController {
     private final DepartmentService departmentService;
 
     @GetDepartmentByName(path = "/get/{depName}")
+    @PreAuthorize("isAuthenticated()")
     public Department findByDepName(@PathVariable("depName") String depName) {
         return departmentService.findByDepName(depName);
     }
 
     @CreateDepartment(path = "/create")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DIRECTOR')")
     public DepartmentAfterCreationDto createDepartment(@RequestBody DepartmentCreateDto departmentCreateDto) {
         return departmentService.createDepartment(departmentCreateDto);
 
     }
 
     @DeleteDepartment(path = "/delete/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DIRECTOR')")
     public ResponseEntity<String> departmentById(@PathVariable("id") @UuidFormatChecker String id) {
         departmentService.deleteDepartmentById(UUID.fromString(id));
         return ResponseEntity.ok("Department with id " + id + " was deleted");
     }
 
     @UpdateDepartment(path = "/update/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DIRECTOR')")
     public DepartmentAfterUpdateDto updateDepartment(@PathVariable("id") @UuidFormatChecker String id, @RequestBody DepartmentUpdateDto departmentUpdateDto) {
         return departmentService.updateDepartment(UUID.fromString(id), departmentUpdateDto);
     }
