@@ -24,6 +24,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
     private final CustomAccessDeniedHandler customAccessDeniedHandler;
+
     @Bean
     public UserDetailsService userDetailsService() {
         return userDetailsService;
