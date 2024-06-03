@@ -5,19 +5,13 @@ import com.example.construction_company_management.dto.EmployeeAfterUpdateDto;
 import com.example.construction_company_management.dto.EmployeeCreateDto;
 import com.example.construction_company_management.dto.EmployeeUpdateDto;
 import com.example.construction_company_management.entity.Employee;
-import com.example.construction_company_management.entity.Role;
 import org.mapstruct.*;
-
-import java.util.UUID;
 
 /**
  * Mapper interface for converting between Employee entity and its corresponding DTO.
  */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EmployeeMapper {
-    default UUID mapRoleToRoleId(Role role) {
-        return role.getRoleId();
-    }
 
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")

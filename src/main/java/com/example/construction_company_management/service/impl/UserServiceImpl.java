@@ -17,6 +17,7 @@ import com.example.construction_company_management.repository.UserInfoRepository
 import com.example.construction_company_management.repository.UserRepository;
 import com.example.construction_company_management.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
     private final RoleRepository roleRepository;
     private final AuthorityRepository authorityRepository;
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -47,24 +49,20 @@ public class UserServiceImpl implements UserService {
         }
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(userCreateDto.getUserName());
-        userInfo.setPassword(userCreateDto.getPassword());
+        userInfo.setPassword(passwordEncoder.encode(userCreateDto.getPassword()));
         userInfo.setPhoneNumber(userCreateDto.getPhoneNumber());
-
         UserInfo savedUserInfo = userInfoRepository.save(userInfo);
 
-        RoleName roleName = Optional.ofNullable(userCreateDto.getRoleName())
-                .map(RoleName::valueOf)
-                .orElse(RoleName.ROLE_DEFAULT_USER);
-
-        Role role = roleRepository.findByRoleName(roleName.name());
+        Role role = roleRepository.findByRoleName(RoleName.ROLE_DEFAULT_USER.name());
         if (role == null) {
             role = new Role();
-            role.setRoleName(roleName.name());
+            role.setRoleName(RoleName.ROLE_DEFAULT_USER.name());
             role = roleRepository.save(role);
         }
 
         User user = new User();
         user.setUserInfo(savedUserInfo);
+        savedUserInfo.setUser(user);
         user.setRole(role);
         user.setFirstName(userCreateDto.getFirstName());
         user.setLastName(userCreateDto.getLastName());
@@ -75,7 +73,7 @@ public class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(user);
 
         Authority authority = new Authority();
-        authority.setAuthorityName(roleName.name());
+        authority.setAuthorityName(RoleName.ROLE_DEFAULT_USER.name());
         authority.setRole(role);
         authority.setUser(user);
         authorityRepository.save(authority);
@@ -86,6 +84,7 @@ public class UserServiceImpl implements UserService {
         return userAfterCreationDto;
 
     }
+
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
@@ -108,25 +107,23 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userUpdateDto.getLastName());
         user.setDateOfBirth(userUpdateDto.getDateOfBirth());
 
-        Role role = roleRepository.findByRoleName(user.getRole().getRoleName());
-        if (role == null) {
-            throw new RoleIsNotFoundException(ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + user.getRole().getRoleName());
+        Role currentRole = user.getRole();
+        Role newRole = roleRepository.findByRoleName(userUpdateDto.getRoleName());
+        if (newRole == null) {
+            throw new RoleIsNotFoundException(ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + userUpdateDto.getRoleName());
         }
 
-        Authority authority = authorityRepository.findByUser(user);
-        if (authority == null) {
-            throw new AuthorityNotFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with id: " + id);
-        }
-
-        if (!role.getRoleName().equals(userUpdateDto.getRoleName())) {
-            Role newRole = roleRepository.findByRoleName(userUpdateDto.getRoleName());
-            if (newRole == null) {
-                throw new RoleIsNotFoundException(ErrorMessage.ROLE_IS_NOT_FOUND + " with name: " + userUpdateDto.getRoleName());
+        if (!currentRole.getRoleName().equals(userUpdateDto.getRoleName())) {
+            Authority authority = authorityRepository.findByUser(user);
+            if (authority == null) {
+                throw new AuthorityNotFoundException(ErrorMessage.AUTHORITY_IS_NOT_FOUND + " with id: " + id);
             }
+
             authority.setAuthorityName(newRole.getRoleName());
+            authorityRepository.save(authority);
+            user.setRole(newRole);
         }
 
-        authorityRepository.save(authority);
         userInfoRepository.save(user.getUserInfo());
         User updatedUser = userRepository.save(user);
 

@@ -9,6 +9,7 @@ import com.example.construction_company_management.entity.User;
 import java.util.UUID;
 
 public interface UserService {
+
     UserAfterCreationDto createUser(UserCreateDto userCreateDto);
 
     void deleteUserById(UUID id);

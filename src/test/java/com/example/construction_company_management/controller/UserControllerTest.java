@@ -1,7 +1,6 @@
 package com.example.construction_company_management.controller;
 
 
-
 import com.example.construction_company_management.dto.UserCreateDto;
 import com.example.construction_company_management.dto.UserUpdateDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -25,9 +24,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username = "admin", password = "123123", roles = "ADMIN")
 @Sql("/db/schemaTest.sql")
 @Sql("/db/dataTest.sql")
- class UserControllerTest {
+class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -37,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date registrationDate = dateFormat.parse("2023-12-25");
     Date dateOfBirth = dateFormat.parse("1992-11-09");
+
     public UserControllerTest() throws ParseException {
     }
 
@@ -46,17 +47,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         mockMvc.perform(MockMvcRequestBuilders.get("/user/get/{id}", id))
                 .andExpect(status().isOk());
     }
+
     @Test
     void createUserTest() throws Exception {
         UserCreateDto userCreateDto = new UserCreateDto(
-               "Name",
-               "LastName",
-               dateOfBirth ,
+                "Name",
+                "LastName",
+                dateOfBirth,
                 registrationDate,
                 "NickName",
                 "123",
-                "0751677677",
-                "ROLE_ADMIN"
+                "0751677677"
+
         );
 
         String json = objectMapper.writeValueAsString(userCreateDto);
@@ -81,7 +83,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         UserUpdateDto userUpdateDto = new UserUpdateDto(
                 "NewName",
                 "NewLastName",
-                dateOfBirth ,
+                dateOfBirth,
                 "NewNickName",
                 "123",
                 "0751677677",

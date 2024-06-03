@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>ConstructionCompanyManagement</artifactId>
@@ -24,7 +24,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -46,13 +45,11 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.5.5</version>
         </dependency>
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>1.5.5.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
@@ -101,6 +98,15 @@
             <artifactId>liquibase-core</artifactId>
             <version>4.18.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -142,9 +148,7 @@
                         <exclude>com/example/construction_company_management/config/*</exclude>
                         <exclude>com/example/construction_company_management/annotation/*</exclude>
                         <exclude>com/example/construction_company_management/mapper/*</exclude>
-                        <exclude>
-                            com/example/construction_company_management/ConstructionCompanyManagementApplication.class
-                        </exclude>
+                        <exclude>com/example/construction_company_management/ConstructionCompanyManagementApplication.class</exclude>
                         <exclude>com/example/construction_company_management/entity/*</exclude>
                         <exclude>com/example/construction_company_management/entity/enums/*</exclude>
                         <exclude>com/example/construction_company_management/entity/enums/tools/*</exclude>

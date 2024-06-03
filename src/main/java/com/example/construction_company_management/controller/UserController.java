@@ -14,6 +14,7 @@ import com.example.construction_company_management.validation.annotation.UuidFor
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,18 +38,21 @@ public class UserController {
     }
 
     @DeleteUser(path = "/delete/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_SUPERVISOR') or hasAuthority('ROLE_DIRECTOR')")
     public ResponseEntity<String> deleteUserById(@PathVariable("id") @Valid @UuidFormatChecker String id) {
         userService.deleteUserById(UUID.fromString(id));
         return ResponseEntity.ok("User with id " + id + " was deleted");
     }
 
     @UpdateUser(path = "/update/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
     public UserAfterUpdateDto updateUser(@PathVariable("id") @UuidFormatChecker String id, @RequestBody UserUpdateDto userUpdateDto) {
         return userService.upDateDto(UUID.fromString(id), userUpdateDto);
 
     }
 
     @GetUserById(path = "/get/{id}")
+    @PreAuthorize("isAuthenticated()")
     public User findById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.getUserById(UUID.fromString(id));
     }

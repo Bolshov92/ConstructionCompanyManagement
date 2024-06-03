@@ -34,9 +34,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final RoleRepository roleRepository;
 
 
-
-
-
     @Override
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public Employee getEmployeeById(UUID id) {
@@ -96,7 +93,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         String firstName = employeeCreationDto.getFirstName();
         String lastName = employeeCreationDto.getLastName();
         Employee existingEmployee = employeeRepository.findEmployeeByFirstNameAndLastName(firstName, lastName);
-        if(existingEmployee!= null) {
+        if (existingEmployee != null) {
             throw new EmployeeAlreadyExistsException("Employee with name " + firstName + "" + lastName + " already exist");
         }
         Role role = roleRepository.findByRoleName(employeeCreationDto.getRoleName());

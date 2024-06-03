@@ -10,7 +10,8 @@ import org.springframework.http.HttpStatus;
 public class ErrorMessage {
     String message;
     HttpStatus errorCode;
-    public ErrorMessage(String message, HttpStatus errorCode){
+
+    public ErrorMessage(String message, HttpStatus errorCode) {
         this.message = message;
         this.errorCode = errorCode;
     }

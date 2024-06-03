@@ -12,11 +12,11 @@ import java.util.Optional;
 
 public class UuidFormatCheckerConstraint implements ConstraintValidator<UuidFormatChecker, String> {
     private static final String UUID_PATTERN = "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$";
+
     @Override
     public void initialize(UuidFormatChecker constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
-
 
 
     @Override

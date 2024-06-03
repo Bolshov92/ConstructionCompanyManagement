@@ -35,7 +35,8 @@ public class UserInfo {
     private String phoneNumber;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "userInfo")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "user_id")
     private User user;
 
 

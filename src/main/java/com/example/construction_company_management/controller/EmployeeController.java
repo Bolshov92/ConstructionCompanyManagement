@@ -14,6 +14,7 @@ import com.example.construction_company_management.validation.annotation.UuidFor
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,11 +30,13 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetEmployeeById(path = "/get/{id}")
+    @PreAuthorize("isAuthenticated()")
     public Employee getEmployeeById(@PathVariable(name = "id") @UuidFormatChecker String id) {
         return employeeService.getEmployeeById(UUID.fromString(id));
     }
 
     @DeleteEmployee(path = "/delete/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker String id) {
         employeeService.deleteEmployeeById(UUID.fromString(id));
@@ -42,11 +45,13 @@ public class EmployeeController {
     }
 
     @UpdateEmployee(path = "/update/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')or hasAuthority('ROLE_SUPERVISOR') or hasAuthority('ROLE_DIRECTOR')")
     public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") @UuidFormatChecker String id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
         return employeeService.updateEmployee(UUID.fromString(id), employeeUpdateDto);
     }
 
     @CreateEmployee(path = "/create")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_SUPERVISOR') or hasAuthority('ROLE_DIRECTOR')")
     @ResponseStatus(HttpStatus.CREATED)
     public EmployeeAfterCreationDto createEmployee(@RequestBody EmployeeCreateDto employeeCreateDto) {
         return employeeService.createEmployee(employeeCreateDto);
