@@ -31,6 +31,73 @@ Replace your_database_password with your database password.
 
 Build the project: ./mvnw clean install
 
+## Database Tables Structure
+
+### Role Table
+- **role_id**: UUID (Primary Key)
+- **role_name**: VARCHAR(255)
+
+### User Info Table
+- **id**: UUID (Primary Key)
+- **user_name**: VARCHAR(255)
+- **password**: VARCHAR(255)
+- **phone_number**: VARCHAR(20)
+- **user_id**: UUID (Foreign Key, References Users Table)
+
+### Users Table
+- **id**: UUID (Primary Key)
+- **first_name**: VARCHAR(255)
+- **last_name**: VARCHAR(255)
+- **date_of_birth**: DATE
+- **registration_date**: DATE
+- **user_info_id**: UUID (Foreign Key, References User Info Table)
+- **role_id**: UUID (Foreign Key, References Role Table)
+
+### Authority Table
+- **id**: UUID (Primary Key)
+- **authority**: VARCHAR(255)
+- **role_id**: UUID (Foreign Key, References Role Table)
+- **user_id**: UUID (Foreign Key, References Users Table)
+
+### Department Table
+- **id**: UUID (Primary Key)
+- **dep_name**: VARCHAR(255)
+
+### Company Table
+- **id**: UUID (Primary Key)
+- **name**: VARCHAR(255)
+- **turnover**: DOUBLE
+- **expenses**: DOUBLE
+- **profit**: DOUBLE
+
+### Employee Table
+- **id**: UUID (Primary Key)
+- **first_name**: VARCHAR(255)
+- **last_name**: VARCHAR(255)
+- **contact_info**: VARCHAR(255)
+- **age**: INT
+- **hire_date**: DATE
+- **end_date**: DATE
+- **department_id**: UUID (Foreign Key, References Department Table)
+- **role_id**: UUID (Foreign Key, References Role Table)
+
+### Construction Project Table
+- **id**: UUID (Primary Key)
+- **project_name**: VARCHAR(255)
+- **address**: VARCHAR(255)
+- **description**: VARCHAR(255)
+- **startDate**: DATE
+- **endDate**: DATE
+- **manager_id**: UUID (Foreign Key, References Employee Table)
+- **company_id**: UUID (Foreign Key, References Company Table)
+
+### Material Table
+- **id**: UUID (Primary Key)
+- **name**: VARCHAR(255)
+- **type**: VARCHAR(255)
+- **quantity_in_stock**: INT
+
+
 ## Usage
 
 ### Access Restrictions
