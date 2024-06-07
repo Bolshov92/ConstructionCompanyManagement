@@ -1,0 +1,27 @@
+services:
+
+
+  web-service:
+     build:
+      context: .
+#     image: company
+     container_name: company_management
+#     volumes:
+#      - .:/app
+
+     ports:
+      - "8092:8080"
+     depends_on:
+      - mysql
+
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Bolshov92
+      MYSQL_DATABASE: company_management
+#    volumes:
+#      - mysql-database:/var/lib/mysql
+    ports:
+      - "3030:3306"

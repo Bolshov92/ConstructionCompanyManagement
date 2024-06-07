@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @GetUserById(path = "/get/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public User findById(@PathVariable("id") @UuidFormatChecker String id) {
         return userService.getUserById(UUID.fromString(id));
     }
