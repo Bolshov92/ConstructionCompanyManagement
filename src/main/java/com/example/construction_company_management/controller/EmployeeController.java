@@ -36,7 +36,6 @@ public class EmployeeController {
     }
 
     @DeleteEmployee(path = "/delete/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_DIRECTOR')")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> deleteEmployeeById(@PathVariable("id") @UuidFormatChecker String id) {
         employeeService.deleteEmployeeById(UUID.fromString(id));
@@ -45,13 +44,11 @@ public class EmployeeController {
     }
 
     @UpdateEmployee(path = "/update/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')or hasAuthority('ROLE_SUPERVISOR') or hasAuthority('ROLE_DIRECTOR')")
     public EmployeeAfterUpdateDto updateEmployee(@PathVariable("id") @UuidFormatChecker String id, @RequestBody EmployeeUpdateDto employeeUpdateDto) {
         return employeeService.updateEmployee(UUID.fromString(id), employeeUpdateDto);
     }
 
     @CreateEmployee(path = "/create")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_SUPERVISOR') or hasAuthority('ROLE_DIRECTOR')")
     @ResponseStatus(HttpStatus.CREATED)
     public EmployeeAfterCreationDto createEmployee(@RequestBody EmployeeCreateDto employeeCreateDto) {
         return employeeService.createEmployee(employeeCreateDto);

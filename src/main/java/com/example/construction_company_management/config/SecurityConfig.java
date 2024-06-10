@@ -2,6 +2,7 @@ package com.example.construction_company_management.config;
 
 import com.example.construction_company_management.controller.handler.CustomAccessDeniedHandler;
 import com.example.construction_company_management.security.UserDetailsServiceImpl;
+import com.example.construction_company_management.security.security_util.RolesPaths;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +36,10 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/user/create").permitAll()
+                        .requestMatchers(RolesPaths.ADMIN_LIST).hasRole(RolesPaths.ADMIN)
+                        .requestMatchers(RolesPaths.SUPERVISOR_LIST).hasRole(RolesPaths.SUPERVISOR)
+                        .requestMatchers(RolesPaths.DIRECTOR_LIST).hasRole(RolesPaths.DIRECTOR)
+                        .requestMatchers(RolesPaths.EMPLOYEE_LIST).hasRole(RolesPaths.EMPLOYEE)
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
