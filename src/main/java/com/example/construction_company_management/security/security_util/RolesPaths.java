@@ -14,6 +14,8 @@ public class RolesPaths {
             "/employee/create",
             "/employee/delete/{id}",
             "/employee/update/{id}",
+            "/employee/get/{id}",
+            "/department/get/{depName}",
             "/department/create",
             "/department/delete/{id}",
             "/department/update/{id}"
