@@ -1,19 +1,15 @@
+version: '3.8'
+
 services:
-
-
   web-service:
-     build:
-      context: .
-#     image: company
-     container_name: company_management
-#     volumes:
-#      - .:/app
-
-     ports:
-      - "8092:8080"
-     depends_on:
+    build: .
+    container_name: company_management
+    ports:
+      - "8090:8090"
+    depends_on:
       - mysql
-
+    networks:
+      - company_network
 
   mysql:
     image: mysql:latest
@@ -21,7 +17,16 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Bolshov92
       MYSQL_DATABASE: company_management
-#    volumes:
-#      - mysql-database:/var/lib/mysql
     ports:
-      - "3030:3306"
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - company_network
+
+volumes:
+  mysql_data:
+
+networks:
+  company_network:
+    driver: bridge
