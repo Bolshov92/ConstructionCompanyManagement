@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   web-service:
-    build: .
+#    build: .
+    image: bolshov92/construction_company_management-web-service:v1.0
     container_name: company_management
     ports:
       - "8081:8080"
