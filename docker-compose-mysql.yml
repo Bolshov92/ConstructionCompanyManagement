@@ -4,6 +4,8 @@ services:
   web-service:
 #    build: .
     image: bolshov92/construction_company_management-web-service:v1.0
+    volumes:
+      - /host/path:/container/path:ro
     container_name: company_management
     ports:
       - "8081:8080"
@@ -27,6 +29,10 @@ services:
 
 volumes:
   mysql_data:
+    driver_opts:
+      type: none
+      o: bind
+      device: /path/to/mysql_data
 
 networks:
   company_network:

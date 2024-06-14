@@ -136,3 +136,4 @@ The API endpoints are documented using Swagger. You can access the documentation
 ## Contributors
 
 - Viacheslav Bolshov <bolshov92@gmail.com>
+- Git Repositories <https://github.com/Bolshov92>

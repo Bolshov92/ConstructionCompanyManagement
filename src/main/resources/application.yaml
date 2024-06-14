@@ -21,6 +21,3 @@ logging:
     com.example.construction_company_management: DEBUG
   file:
     name: construction_company_management.log
-
-#server:
-#  port: 8090
