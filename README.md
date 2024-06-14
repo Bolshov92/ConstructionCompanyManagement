@@ -31,6 +31,14 @@ Replace your_database_password with your database password.
 
 Build the project: ./mvnw clean install
 
+Docker Image: 
+You can also run this project using Docker:
+
+bash
+Copy code
+docker pull bolshov92/construction_company_management-web-service
+docker run -p 8080:8080 bolshov92/construction_company_management-web-service
+
 ## Database Tables Structure
 
 ### Role Table
