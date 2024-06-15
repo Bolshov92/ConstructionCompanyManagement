@@ -1,15 +1,15 @@
-2024-06-13T22:09:02.338+01:00  INFO 4991 --- [main] ConstructionCompanyManagementApplication : Starting ConstructionCompanyManagementApplication using Java 20.0.1 with PID 4991 (/Users/mrbolshov/Home/IT/Construction_company_management/target/classes started by mrbolshov in /Users/mrbolshov/Home/IT/Construction_company_management)
-2024-06-13T22:09:02.353+01:00 DEBUG 4991 --- [main] ConstructionCompanyManagementApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
-2024-06-13T22:09:02.354+01:00  INFO 4991 --- [main] ConstructionCompanyManagementApplication : No active profile set, falling back to 1 default profile: "default"
-2024-06-13T22:09:03.177+01:00  INFO 4991 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-06-13T22:09:03.210+01:00  INFO 4991 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 6 JPA repository interfaces.
-2024-06-13T22:09:03.647+01:00  INFO 4991 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-06-13T22:09:03.652+01:00  INFO 4991 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-06-13T22:09:03.653+01:00  INFO 4991 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-06-13T22:09:03.681+01:00  INFO 4991 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-06-13T22:09:03.681+01:00  INFO 4991 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1233 ms
-2024-06-13T22:09:03.783+01:00  INFO 4991 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-06-13T22:09:04.858+01:00 ERROR 4991 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-06-15T17:47:47.528+01:00  INFO 12656 --- [main] ConstructionCompanyManagementApplication : Starting ConstructionCompanyManagementApplication using Java 20.0.1 with PID 12656 (/Users/mrbolshov/Home/IT/Construction_company_management/target/classes started by mrbolshov in /Users/mrbolshov/Home/IT/Construction_company_management)
+2024-06-15T17:47:47.531+01:00 DEBUG 12656 --- [main] ConstructionCompanyManagementApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-06-15T17:47:47.532+01:00  INFO 12656 --- [main] ConstructionCompanyManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-06-15T17:47:47.933+01:00  INFO 12656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-15T17:47:47.966+01:00  INFO 12656 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 6 JPA repository interfaces.
+2024-06-15T17:47:48.358+01:00  INFO 12656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-15T17:47:48.364+01:00  INFO 12656 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-15T17:47:48.364+01:00  INFO 12656 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-15T17:47:48.389+01:00  INFO 12656 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-15T17:47:48.389+01:00  INFO 12656 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 834 ms
+2024-06-15T17:47:48.501+01:00  INFO 12656 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-15T17:47:49.576+01:00 ERROR 12656 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -75,14 +75,14 @@ Caused by: java.net.UnknownHostException: mysql: nodename nor servname provided,
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53) ~[mysql-connector-j-8.4.0.jar:8.4.0]
 	... 34 common frames omitted
 
-2024-06-13T22:09:04.867+01:00  WARN 4991 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+2024-06-15T17:47:49.580+01:00  WARN 12656 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2024-06-13T22:09:04.871+01:00  INFO 4991 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-06-13T22:09:04.894+01:00  INFO 4991 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-06-15T17:47:49.582+01:00  INFO 12656 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-06-15T17:47:49.592+01:00  INFO 12656 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-06-13T22:09:04.910+01:00 ERROR 4991 --- [main] o.s.boot.SpringApplication               : Application run failed
+2024-06-15T17:47:49.602+01:00 ERROR 12656 --- [main] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
@@ -158,213 +158,33 @@ Caused by: java.net.UnknownHostException: mysql: nodename nor servname provided,
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53) ~[mysql-connector-j-8.4.0.jar:8.4.0]
 	... 34 common frames omitted
 
-2024-06-13T22:09:27.573+01:00  INFO 5002 --- [main] ConstructionCompanyManagementApplication : Starting ConstructionCompanyManagementApplication using Java 20.0.1 with PID 5002 (/Users/mrbolshov/Home/IT/Construction_company_management/target/classes started by mrbolshov in /Users/mrbolshov/Home/IT/Construction_company_management)
-2024-06-13T22:09:27.574+01:00 DEBUG 5002 --- [main] ConstructionCompanyManagementApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
-2024-06-13T22:09:27.574+01:00  INFO 5002 --- [main] ConstructionCompanyManagementApplication : No active profile set, falling back to 1 default profile: "default"
-2024-06-13T22:09:28.110+01:00  INFO 5002 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-06-13T22:09:28.148+01:00  INFO 5002 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
-2024-06-13T22:09:28.551+01:00  INFO 5002 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-06-13T22:09:28.557+01:00  INFO 5002 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-06-13T22:09:28.557+01:00  INFO 5002 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-06-13T22:09:28.581+01:00  INFO 5002 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-06-13T22:09:28.581+01:00  INFO 5002 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 984 ms
-2024-06-13T22:09:28.691+01:00  INFO 5002 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-06-13T22:09:29.738+01:00 ERROR 5002 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
-
-com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:165) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:55) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:861) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:234) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
-	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:280) ~[liquibase-core-4.18.0.jar:na]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231) ~[spring-context-6.1.4.jar:6.1.4]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949) ~[spring-context-6.1.4.jar:6.1.4]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.4.jar:6.1.4]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.3.jar:3.2.3]
-	at com.example.construction_company_management.ConstructionCompanyManagementApplication.main(ConstructionCompanyManagementApplication.java:11) ~[classes/:na]
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484) ~[na:na]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:156) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:79) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:139) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:980) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:851) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	... 31 common frames omitted
-Caused by: java.net.UnknownHostException: mysql: nodename nor servname provided, or not known
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
-	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1061) ~[na:na]
-	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1683) ~[na:na]
-	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1004) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1673) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1533) ~[na:na]
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:121) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	... 34 common frames omitted
-
-2024-06-13T22:09:29.789+01:00  WARN 5002 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2024-06-13T22:09:29.796+01:00  INFO 5002 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-06-13T22:09:29.812+01:00  INFO 5002 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-06-13T22:09:29.825+01:00 ERROR 5002 --- [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231) ~[spring-context-6.1.4.jar:6.1.4]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949) ~[spring-context-6.1.4.jar:6.1.4]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.4.jar:6.1.4]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.3.jar:3.2.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.3.jar:3.2.3]
-	at com.example.construction_company_management.ConstructionCompanyManagementApplication.main(ConstructionCompanyManagementApplication.java:11) ~[classes/:na]
-Caused by: liquibase.exception.DatabaseException: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:285) ~[liquibase-core-4.18.0.jar:na]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.4.jar:6.1.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.4.jar:6.1.4]
-	... 18 common frames omitted
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:165) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:55) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:861) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:234) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
-	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:280) ~[liquibase-core-4.18.0.jar:na]
-	... 20 common frames omitted
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484) ~[na:na]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:156) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:79) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:139) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:980) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:851) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	... 31 common frames omitted
-Caused by: java.net.UnknownHostException: mysql: nodename nor servname provided, or not known
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
-	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
-	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1061) ~[na:na]
-	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1683) ~[na:na]
-	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1004) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1673) ~[na:na]
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1533) ~[na:na]
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:121) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53) ~[mysql-connector-j-8.4.0.jar:8.4.0]
-	... 34 common frames omitted
-
-2024-06-13T22:09:51.275+01:00  INFO 5020 --- [main] ConstructionCompanyManagementApplication : Starting ConstructionCompanyManagementApplication using Java 20.0.1 with PID 5020 (/Users/mrbolshov/Home/IT/Construction_company_management/target/classes started by mrbolshov in /Users/mrbolshov/Home/IT/Construction_company_management)
-2024-06-13T22:09:51.276+01:00 DEBUG 5020 --- [main] ConstructionCompanyManagementApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
-2024-06-13T22:09:51.276+01:00  INFO 5020 --- [main] ConstructionCompanyManagementApplication : No active profile set, falling back to 1 default profile: "default"
-2024-06-13T22:09:51.744+01:00  INFO 5020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-06-13T22:09:51.779+01:00  INFO 5020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
-2024-06-13T22:09:52.214+01:00  INFO 5020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-06-13T22:09:52.223+01:00  INFO 5020 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-06-13T22:09:52.223+01:00  INFO 5020 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-06-13T22:09:52.260+01:00  INFO 5020 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-06-13T22:09:52.261+01:00  INFO 5020 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 961 ms
-2024-06-13T22:09:52.357+01:00  INFO 5020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-06-13T22:09:52.532+01:00  INFO 5020 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21b744ec
-2024-06-13T22:09:52.533+01:00  INFO 5020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-06-13T22:09:52.721+01:00  INFO 5020 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
-2024-06-13T22:09:52.841+01:00  INFO 5020 --- [main] liquibase.changelog                      : Creating database history table with name: company_management.DATABASECHANGELOG
-2024-06-13T22:09:52.857+01:00  INFO 5020 --- [main] liquibase.changelog                      : Reading from company_management.DATABASECHANGELOG
-2024-06-13T22:09:52.891+01:00  INFO 5020 --- [main] liquibase.servicelocator                 : Cannot load service: liquibase.hub.HubService: Provider liquibase.hub.core.StandardHubService could not be instantiated
-2024-06-13T22:09:52.963+01:00  INFO 5020 --- [main] liquibase.changelog                      : Custom SQL executed
-2024-06-13T22:09:52.963+01:00  INFO 5020 --- [main] liquibase.changelog                      : ChangeSet db/changelog/v0.0.1-SNAPSHOT/create-tables-changelog.sql::raw::includeAll ran successfully in 69ms
-2024-06-13T22:09:52.986+01:00  INFO 5020 --- [main] liquibase.changelog                      : Custom SQL executed
-2024-06-13T22:09:52.986+01:00  INFO 5020 --- [main] liquibase.changelog                      : ChangeSet db/changelog/v0.0.1-SNAPSHOT/insert-data-changelog.sql::raw::includeAll ran successfully in 8ms
-2024-06-13T22:09:52.989+01:00  INFO 5020 --- [main] liquibase.lockservice                    : Successfully released change log lock
-2024-06-13T22:09:53.047+01:00  INFO 5020 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-06-13T22:09:53.078+01:00  INFO 5020 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-06-13T22:09:53.095+01:00  INFO 5020 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-06-13T22:09:53.202+01:00  INFO 5020 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-06-13T22:09:53.738+01:00  INFO 5020 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-06-13T22:09:53.740+01:00  INFO 5020 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-06-13T22:09:54.448+01:00  WARN 5020 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-06-13T22:09:54.784+01:00  INFO 5020 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@99e03a9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a07088b, org.springframework.security.web.context.SecurityContextHolderFilter@7f6c85c4, org.springframework.security.web.header.HeaderWriterFilter@51a3e3b4, org.springframework.web.filter.CorsFilter@32f35739, org.springframework.security.web.authentication.logout.LogoutFilter@63f1d374, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@24d998ba, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@776ae580, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@70c6860, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@11885841, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12dcfa6a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f9009d3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ef6a063, org.springframework.security.web.access.ExceptionTranslationFilter@bf70ce5, org.springframework.security.web.access.intercept.AuthorizationFilter@6354a50a]
-2024-06-13T22:09:55.146+01:00  INFO 5020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-06-13T22:09:55.153+01:00  INFO 5020 --- [main] ConstructionCompanyManagementApplication : Started ConstructionCompanyManagementApplication in 4.102 seconds (process running for 4.481)
-2024-06-13T22:10:05.792+01:00  INFO 5020 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-06-13T22:10:05.793+01:00  INFO 5020 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-06-13T22:10:05.801+01:00  INFO 5020 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
-2024-06-13T22:10:05.886+01:00  INFO 5020 --- [http-nio-8080-exec-2] c.e.c.aspect.LoggingAspect               : NEW REQUEST:
-IP : 0:0:0:0:0:0:0:1
-URL : http://localhost:8080/user/create
-HTTP_METHOD : POST
-CONTROLLER_METHOD : com.example.construction_company_management.controller.UserController.createUser
-
-2024-06-13T22:10:05.894+01:00  INFO 5020 --- [http-nio-8080-exec-2] c.e.c.aspect.LoggingAspect               : RUN SERVICE:
-SERVICE_METHOD : com.example.construction_company_management.service.impl.UserServiceImpl.createUser
-
-2024-06-13T22:10:06.143+01:00  INFO 5020 --- [http-nio-8080-exec-2] c.e.c.aspect.LoggingAspect               : Return value: UserAfterCreationDto(userId=00000190-136f-b421-6d18-1dc99d054bcc, status=User was created)
-END OF REQUEST
-
-2024-06-13T22:10:25.605+01:00  INFO 5020 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-06-13T22:10:25.608+01:00  INFO 5020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-06-13T22:10:25.624+01:00  INFO 5020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-15T17:48:33.893+01:00  INFO 12682 --- [main] ConstructionCompanyManagementApplication : Starting ConstructionCompanyManagementApplication using Java 20.0.1 with PID 12682 (/Users/mrbolshov/Home/IT/Construction_company_management/target/classes started by mrbolshov in /Users/mrbolshov/Home/IT/Construction_company_management)
+2024-06-15T17:48:33.893+01:00 DEBUG 12682 --- [main] ConstructionCompanyManagementApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-06-15T17:48:33.894+01:00  INFO 12682 --- [main] ConstructionCompanyManagementApplication : No active profile set, falling back to 1 default profile: "default"
+2024-06-15T17:48:34.283+01:00  INFO 12682 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-15T17:48:34.313+01:00  INFO 12682 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 6 JPA repository interfaces.
+2024-06-15T17:48:34.706+01:00  INFO 12682 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-06-15T17:48:34.711+01:00  INFO 12682 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-15T17:48:34.712+01:00  INFO 12682 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-06-15T17:48:34.740+01:00  INFO 12682 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-15T17:48:34.740+01:00  INFO 12682 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 825 ms
+2024-06-15T17:48:34.842+01:00  INFO 12682 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-15T17:48:35.111+01:00  INFO 12682 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c820d2
+2024-06-15T17:48:35.112+01:00  INFO 12682 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-15T17:48:35.326+01:00  INFO 12682 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-06-15T17:48:35.495+01:00  INFO 12682 --- [main] liquibase.changelog                      : Reading from company_management.DATABASECHANGELOG
+2024-06-15T17:48:35.517+01:00  INFO 12682 --- [main] liquibase.servicelocator                 : Cannot load service: liquibase.hub.HubService: Provider liquibase.hub.core.StandardHubService could not be instantiated
+2024-06-15T17:48:35.521+01:00  INFO 12682 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2024-06-15T17:48:35.583+01:00  INFO 12682 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-15T17:48:35.612+01:00  INFO 12682 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-15T17:48:35.628+01:00  INFO 12682 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-15T17:48:35.725+01:00  INFO 12682 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-15T17:48:36.239+01:00  INFO 12682 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-15T17:48:36.241+01:00  INFO 12682 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-15T17:48:36.959+01:00  WARN 12682 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-15T17:48:37.306+01:00  INFO 12682 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@319c77de, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12dcfa6a, org.springframework.security.web.context.SecurityContextHolderFilter@32107bba, org.springframework.security.web.header.HeaderWriterFilter@7acb0a44, org.springframework.web.filter.CorsFilter@1f9009d3, org.springframework.security.web.authentication.logout.LogoutFilter@1bf8ea44, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@14432052, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@298990ab, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4c9ed40, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@27e0906f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3759ea4d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c75f3a8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@56394880, org.springframework.security.web.access.ExceptionTranslationFilter@6089c1e3, org.springframework.security.web.access.intercept.AuthorizationFilter@3f6bfcbe]
+2024-06-15T17:48:37.654+01:00  INFO 12682 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-06-15T17:48:37.660+01:00  INFO 12682 --- [main] ConstructionCompanyManagementApplication : Started ConstructionCompanyManagementApplication in 4.005 seconds (process running for 4.35)
+2024-06-15T17:48:46.178+01:00  INFO 12682 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-15T17:48:46.196+01:00  INFO 12682 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-15T17:48:46.208+01:00  INFO 12682 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
